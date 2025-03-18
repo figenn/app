@@ -30,8 +30,8 @@ importers:
         specifier: ^1.1.2
         version: 1.1.2(@types/react@19.0.11)(react@19.0.0)
       '@tanstack/react-query':
-        specifier: ^5.68.0
-        version: 5.68.0(react@19.0.0)
+        specifier: ^5.69.0
+        version: 5.69.0(react@19.0.0)
       canvas-confetti:
         specifier: ^1.9.3
         version: 1.9.3
@@ -94,10 +94,10 @@ importers:
         version: 5.0.3(@types/react@19.0.11)(react@19.0.0)
     devDependencies:
       '@eslint/eslintrc':
-        specifier: ^3
+        specifier: ^3.3.0
         version: 3.3.0
       '@tailwindcss/postcss':
-        specifier: ^4
+        specifier: ^4.0.14
         version: 4.0.14
       '@tanstack/eslint-plugin-query':
         specifier: ^5.68.0
@@ -106,25 +106,25 @@ importers:
         specifier: ^1.9.0
         version: 1.9.0
       '@types/node':
-        specifier: ^20
+        specifier: ^20.17.24
         version: 20.17.24
       '@types/react':
-        specifier: ^19
+        specifier: ^19.0.11
         version: 19.0.11
       '@types/react-dom':
-        specifier: ^19
+        specifier: ^19.0.4
         version: 19.0.4(@types/react@19.0.11)
       eslint:
-        specifier: ^9
+        specifier: ^9.22.0
         version: 9.22.0(jiti@2.4.2)
       eslint-config-next:
         specifier: 15.2.3
         version: 15.2.3(eslint@9.22.0(jiti@2.4.2))(typescript@5.8.2)
       tailwindcss:
-        specifier: ^4
+        specifier: ^4.0.14
         version: 4.0.14
       typescript:
-        specifier: ^5
+        specifier: ^5.8.2
         version: 5.8.2
 
 packages:
@@ -990,11 +990,11 @@ packages:
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
-  '@tanstack/query-core@5.68.0':
-    resolution: {integrity: sha512-r8rFYYo8/sY/LNaOqX84h12w7EQev4abFXDWy4UoDVUJzJ5d9Fbmb8ayTi7ScG+V0ap44SF3vNs/45mkzDGyGw==}
+  '@tanstack/query-core@5.69.0':
+    resolution: {integrity: sha512-Kn410jq6vs1P8Nm+ZsRj9H+U3C0kjuEkYLxbiCyn3MDEiYor1j2DGVULqAz62SLZtUZ/e9Xt6xMXiJ3NJ65WyQ==}
 
-  '@tanstack/react-query@5.68.0':
-    resolution: {integrity: sha512-mMOdGDKlwTP/WV72QqSNf4PAMeoBp/DqBHQ222wBfb51Looi8QUqnCnb9O98ZgvNISmy6fzxRGBJdZ+9IBvX2Q==}
+  '@tanstack/react-query@5.69.0':
+    resolution: {integrity: sha512-Ift3IUNQqTcaFa1AiIQ7WCb/PPy8aexZdq9pZWLXhfLcLxH0+PZqJ2xFImxCpdDZrFRZhLJrh76geevS5xjRhA==}
     peerDependencies:
       react: ^18 || ^19
 
@@ -1071,58 +1071,58 @@ packages:
     resolution: {integrity: sha512-AjOC3zfnxd6S4Eiy3jwktJPclqhFHNyd8L6Gycf9WUPoKZpgM5PjkxY1X7uSy61xVpiJDhhk7XT2NVsN3ALTWg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@unrs/rspack-resolver-binding-darwin-arm64@1.1.2':
-    resolution: {integrity: sha512-bQx2L40UF5XxsXwkD26PzuspqUbUswWVbmclmUC+c83Cv/EFrFJ1JaZj5Q5jyYglKGOtyIWY/hXTCdWRN9vT0Q==}
+  '@unrs/rspack-resolver-binding-darwin-arm64@1.2.1':
+    resolution: {integrity: sha512-xgSjy64typsn/lhQk/uKaS363H7ZeIBlWSh25FJFWXSCeLMHpEZ0umDo5Vzqi5iS26OZ5R1SpQkwiS78GhQRjw==}
     cpu: [arm64]
     os: [darwin]
 
-  '@unrs/rspack-resolver-binding-darwin-x64@1.1.2':
-    resolution: {integrity: sha512-dMi9a7//BsuPTnhWEDxmdKZ6wxQlPnAob8VSjefGbKX/a+pHfTaX1pm/jv2VPdarP96IIjCKPatJS/TtLQeGQA==}
+  '@unrs/rspack-resolver-binding-darwin-x64@1.2.1':
+    resolution: {integrity: sha512-3maDtW0vehzciEbuLxc2g+0FmDw5LGfCt+yMN1ZDn0lW0ikEBEFp6ul3h2fRphtfuCc7IvBJE9WWTt1UHkS7Nw==}
     cpu: [x64]
     os: [darwin]
 
-  '@unrs/rspack-resolver-binding-freebsd-x64@1.1.2':
-    resolution: {integrity: sha512-RiBZQ+LSORQObfhV1yH7jGz+4sN3SDYtV53jgc8tUVvqdqVDaUm1KA3zHLffmoiYNGrYkE3sSreGC+FVpsB4Vg==}
+  '@unrs/rspack-resolver-binding-freebsd-x64@1.2.1':
+    resolution: {integrity: sha512-aN6ifws9rNLjK2+6sIU9wvHyjXEf3S5+EZTHRarzd4jfa8i5pA7Mwt28un2DZVrBtIxhWDQvUPVKGI7zSBfVCA==}
     cpu: [x64]
     os: [freebsd]
 
-  '@unrs/rspack-resolver-binding-linux-arm-gnueabihf@1.1.2':
-    resolution: {integrity: sha512-IyKIFBtOvuPCJt1WPx9e9ovTGhZzrIbW11vWzw4aPmx3VShE+YcMpAldqQubdCep0UVKZyFt+2hQDQZwFiJ4jg==}
+  '@unrs/rspack-resolver-binding-linux-arm-gnueabihf@1.2.1':
+    resolution: {integrity: sha512-tKqu9VQyCO1yEUX6n6jgOHi7SJA9e6lvHczK60gur4VBITxnPmVYiCj2aekrOOIavvvjjuWAL2rqPQuc4g7RHQ==}
     cpu: [arm]
     os: [linux]
 
-  '@unrs/rspack-resolver-binding-linux-arm64-gnu@1.1.2':
-    resolution: {integrity: sha512-RfYtlCtJrv5i6TO4dSlpbyOJX9Zbhmkqrr9hjDfr6YyE5KD0ywLRzw8UjXsohxG1XWgRpb2tvPuRYtURJwbqWg==}
+  '@unrs/rspack-resolver-binding-linux-arm64-gnu@1.2.1':
+    resolution: {integrity: sha512-+xDI0kvwPiCR7334O83TPfaUXSe0UMVi5srQpQxP4+SDVYuONWsbwAC1IXe+yfOwRVGZsUdW9wE0ZiWs4Z+egw==}
     cpu: [arm64]
     os: [linux]
 
-  '@unrs/rspack-resolver-binding-linux-arm64-musl@1.1.2':
-    resolution: {integrity: sha512-MaITzkoqsn1Rm3+YnplubgAQEfOt+2jHfFvuFhXseUfcfbxe8Zyc3TM7LKwgv7mRVjIl+/yYN5JqL0cjbnhAnQ==}
+  '@unrs/rspack-resolver-binding-linux-arm64-musl@1.2.1':
+    resolution: {integrity: sha512-fcrVHlw+6UgQliMbI0znFD4ASWKuyY17FdH67ZmyNH62b0hRhhxQuJE0D6N3410m8lKVu4QW4EzFiHxYFUC0cg==}
     cpu: [arm64]
     os: [linux]
 
-  '@unrs/rspack-resolver-binding-linux-x64-gnu@1.1.2':
-    resolution: {integrity: sha512-Nu981XmzQqis/uB3j4Gi3p5BYCd/zReU5zbJmjMrEH7IIRH0dxZpdOmS/+KwEk6ao7Xd8P2D2gDHpHD/QTp0aQ==}
+  '@unrs/rspack-resolver-binding-linux-x64-gnu@1.2.1':
+    resolution: {integrity: sha512-xISTyUJ2PiAT4x9nlh8FdciDcdKbsatgK9qO7EEsILt9VB7Y1mHYGaszj3ouxfZnaKQ13WwW+dFLGxkZLP/WVg==}
     cpu: [x64]
     os: [linux]
 
-  '@unrs/rspack-resolver-binding-linux-x64-musl@1.1.2':
-    resolution: {integrity: sha512-xJupeDvaRpV0ADMuG1dY9jkOjhUzTqtykvchiU2NldSD+nafSUcMWnoqzNUx7HGiqbTMOw9d9xT8ZiFs+6ZFyQ==}
+  '@unrs/rspack-resolver-binding-linux-x64-musl@1.2.1':
+    resolution: {integrity: sha512-LE8EjE/iPlvSsFbZ6P9c0Jh5/pifAi03UYeXYwOnQqt1molKAPMB0R4kGWOM7dnDYaNgkk1MN9MOTCLsqe97Fw==}
     cpu: [x64]
     os: [linux]
 
-  '@unrs/rspack-resolver-binding-wasm32-wasi@1.1.2':
-    resolution: {integrity: sha512-un6X/xInks+KEgGpIHFV8BdoODHRohaDRvOwtjq+FXuoI4Ga0P6sLRvf4rPSZDvoMnqUhZtVNG0jG9oxOnrrLQ==}
+  '@unrs/rspack-resolver-binding-wasm32-wasi@1.2.1':
+    resolution: {integrity: sha512-XERT3B88+G55RgG96May8QvAdgGzHr8qtQ70cIdbuWTpIcA0I76cnxSZ8Qwx33y73jE5N/myX2YKDlFksn4z6w==}
     engines: {node: '>=14.0.0'}
     cpu: [wasm32]
 
-  '@unrs/rspack-resolver-binding-win32-arm64-msvc@1.1.2':
-    resolution: {integrity: sha512-2lCFkeT1HYUb/OOStBS1m67aZOf9BQxRA+Wf/xs94CGgzmoQt7H4V/BrkB/GSGKsudXjkiwt2oHNkHiowAS90A==}
+  '@unrs/rspack-resolver-binding-win32-arm64-msvc@1.2.1':
+    resolution: {integrity: sha512-I8OLI6JbmNx2E/SG8MOEuo/d6rNx8dwgL09rcItSMcP82v1oZ8AY8HNA+axxuxEH95nkb6MPJU09p63isDvzrA==}
     cpu: [arm64]
     os: [win32]
 
-  '@unrs/rspack-resolver-binding-win32-x64-msvc@1.1.2':
-    resolution: {integrity: sha512-EYfya5HCQ/8Yfy7rvAAX2rGytu81+d/CIhNCbZfNKLQ690/qFsdEeTXRsMQW1afHoluMM50PsjPYu8ndy8fSQg==}
+  '@unrs/rspack-resolver-binding-win32-x64-msvc@1.2.1':
+    resolution: {integrity: sha512-s5WvCljhFqiE3McvaD3lDIsQpmk7gEJRUHy1PRwLPzEB7snq9P2xQeqgzdjGhJQq62jBFz7NDy7NbMkocWr2pw==}
     cpu: [x64]
     os: [win32]
 
@@ -2190,8 +2190,8 @@ packages:
     resolution: {integrity: sha512-g6QUff04oZpHs0eG5p83rFLhHeV00ug/Yf9nZM6fLeUrPguBTkTQOdpAWWspMh55TZfVQDPaN3NQJfbVRAxdIw==}
     engines: {iojs: '>=1.0.0', node: '>=0.10.0'}
 
-  rspack-resolver@1.1.2:
-    resolution: {integrity: sha512-eHhz+9JWHFdbl/CVVqEP6kviLFZqw1s0MWxLdsGMtUKUspSO3SERptPohmrUIC9jT1bGV9Bd3+r8AmWbdfNAzQ==}
+  rspack-resolver@1.2.1:
+    resolution: {integrity: sha512-yTaWGUvHOjcoyFMdVTdYt2nq2Hu8sw6ia3X9szloXFJlWLQZnQ9g/4TPhL3Bb3qN58Mkye8mFG7MCaKhya7fOw==}
 
   run-parallel@1.2.0:
     resolution: {integrity: sha512-5l4VyZR86LZ/lDxZTR6jqL8AFE2S0IFLMP26AbjsLVADxHdhB/c0GUsH+y39UfCi3dzz8OlQuPmnaJOMoDHQBA==}
@@ -3266,11 +3266,11 @@ snapshots:
       - supports-color
       - typescript
 
-  '@tanstack/query-core@5.68.0': {}
+  '@tanstack/query-core@5.69.0': {}
 
-  '@tanstack/react-query@5.68.0(react@19.0.0)':
+  '@tanstack/react-query@5.69.0(react@19.0.0)':
     dependencies:
-      '@tanstack/query-core': 5.68.0
+      '@tanstack/query-core': 5.69.0
       react: 19.0.0
 
   '@tybys/wasm-util@0.9.0':
@@ -3375,39 +3375,39 @@ snapshots:
       '@typescript-eslint/types': 8.26.1
       eslint-visitor-keys: 4.2.0
 
-  '@unrs/rspack-resolver-binding-darwin-arm64@1.1.2':
+  '@unrs/rspack-resolver-binding-darwin-arm64@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-darwin-x64@1.1.2':
+  '@unrs/rspack-resolver-binding-darwin-x64@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-freebsd-x64@1.1.2':
+  '@unrs/rspack-resolver-binding-freebsd-x64@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-linux-arm-gnueabihf@1.1.2':
+  '@unrs/rspack-resolver-binding-linux-arm-gnueabihf@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-linux-arm64-gnu@1.1.2':
+  '@unrs/rspack-resolver-binding-linux-arm64-gnu@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-linux-arm64-musl@1.1.2':
+  '@unrs/rspack-resolver-binding-linux-arm64-musl@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-linux-x64-gnu@1.1.2':
+  '@unrs/rspack-resolver-binding-linux-x64-gnu@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-linux-x64-musl@1.1.2':
+  '@unrs/rspack-resolver-binding-linux-x64-musl@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-wasm32-wasi@1.1.2':
+  '@unrs/rspack-resolver-binding-wasm32-wasi@1.2.1':
     dependencies:
       '@napi-rs/wasm-runtime': 0.2.7
     optional: true
 
-  '@unrs/rspack-resolver-binding-win32-arm64-msvc@1.1.2':
+  '@unrs/rspack-resolver-binding-win32-arm64-msvc@1.2.1':
     optional: true
 
-  '@unrs/rspack-resolver-binding-win32-x64-msvc@1.1.2':
+  '@unrs/rspack-resolver-binding-win32-x64-msvc@1.2.1':
     optional: true
 
   acorn-jsx@5.3.2(acorn@8.14.1):
@@ -3807,7 +3807,7 @@ snapshots:
       eslint: 9.22.0(jiti@2.4.2)
       get-tsconfig: 4.10.0
       is-bun-module: 1.3.0
-      rspack-resolver: 1.1.2
+      rspack-resolver: 1.2.1
       stable-hash: 0.0.5
       tinyglobby: 0.2.12
     optionalDependencies:
@@ -4635,19 +4635,19 @@ snapshots:
 
   reusify@1.1.0: {}
 
-  rspack-resolver@1.1.2:
+  rspack-resolver@1.2.1:
     optionalDependencies:
-      '@unrs/rspack-resolver-binding-darwin-arm64': 1.1.2
-      '@unrs/rspack-resolver-binding-darwin-x64': 1.1.2
-      '@unrs/rspack-resolver-binding-freebsd-x64': 1.1.2
-      '@unrs/rspack-resolver-binding-linux-arm-gnueabihf': 1.1.2
-      '@unrs/rspack-resolver-binding-linux-arm64-gnu': 1.1.2
-      '@unrs/rspack-resolver-binding-linux-arm64-musl': 1.1.2
-      '@unrs/rspack-resolver-binding-linux-x64-gnu': 1.1.2
-      '@unrs/rspack-resolver-binding-linux-x64-musl': 1.1.2
-      '@unrs/rspack-resolver-binding-wasm32-wasi': 1.1.2
-      '@unrs/rspack-resolver-binding-win32-arm64-msvc': 1.1.2
-      '@unrs/rspack-resolver-binding-win32-x64-msvc': 1.1.2
+      '@unrs/rspack-resolver-binding-darwin-arm64': 1.2.1
+      '@unrs/rspack-resolver-binding-darwin-x64': 1.2.1
+      '@unrs/rspack-resolver-binding-freebsd-x64': 1.2.1
+      '@unrs/rspack-resolver-binding-linux-arm-gnueabihf': 1.2.1
+      '@unrs/rspack-resolver-binding-linux-arm64-gnu': 1.2.1
+      '@unrs/rspack-resolver-binding-linux-arm64-musl': 1.2.1
+      '@unrs/rspack-resolver-binding-linux-x64-gnu': 1.2.1
+      '@unrs/rspack-resolver-binding-linux-x64-musl': 1.2.1
+      '@unrs/rspack-resolver-binding-wasm32-wasi': 1.2.1
+      '@unrs/rspack-resolver-binding-win32-arm64-msvc': 1.2.1
+      '@unrs/rspack-resolver-binding-win32-x64-msvc': 1.2.1
 
   run-parallel@1.2.0:
     dependencies:

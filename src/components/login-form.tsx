@@ -1,6 +1,6 @@
 "use client";
 
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -26,6 +26,7 @@ export default function LoginForm() {
   const router = useRouter();
   const t = useTranslations("login");
   const [isPending, startTransition] = useTransition();
+  const [serverError, setServerError] = useState<string | null>(null);
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -41,7 +42,7 @@ export default function LoginForm() {
       const response = await login(data);
 
       if (!response.success) {
-        toast.error(response.message);
+        setServerError(response.message ?? "An unknown error occurred.");
         return;
       }
 
@@ -61,13 +62,18 @@ export default function LoginForm() {
   });
 
   return (
-    <div className="grid gap-6">
+    <div className="grid gap-3">
       <div className="flex flex-col items-center gap-2 text-center">
         <h1 className="text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted-foreground text-sm text-balance">
           {t("description")}
         </p>
       </div>
+      {serverError && (
+        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md">
+          {serverError}
+        </div>
+      )}
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField

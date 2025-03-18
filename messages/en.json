@@ -31,5 +31,27 @@
     "orContinueWith": "Or continue with",
     "google": "Google",
     "success": "Login successful"
+  },
+  "Register": {
+    "title": "Create an account",
+    "subtitle": "Join us in just a few seconds.",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "country": "Country",
+    "countryPlaceholder": "Select your country",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordConfirm": "Confirm Password",
+    "passwordConfirmPlaceholder": "Confirm your password",
+    "register": "Sign up",
+    "registering": "Signing up...",
+    "error": {
+      "unknown": "An unknown error occurred.",
+      "unexpected": "An unexpected error occurred."
+    }
   }
   }

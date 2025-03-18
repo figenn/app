@@ -31,5 +31,27 @@
         "orContinueWith": "Ou continuez avec",
         "google": "Google",
         "success": "Connexion réussie"
+      },
+    "Register": {
+        "title": "Créer un compte",
+        "subtitle": "Rejoignez-nous en quelques secondes.",
+        "firstName": "Prénom",
+        "firstNamePlaceholder": "Entrez votre prénom",
+        "lastName": "Nom",
+        "lastNamePlaceholder": "Entrez votre nom",
+        "email": "Email",
+        "emailPlaceholder": "Entrez votre email",
+        "country": "Pays",
+        "countryPlaceholder": "Sélectionnez votre pays",
+        "password": "Mot de passe",
+        "passwordPlaceholder": "Entrez votre mot de passe",
+        "passwordConfirm": "Confirmer le mot de passe",
+        "passwordConfirmPlaceholder": "Confirmez votre mot de passe",
+        "register": "S'inscrire",
+        "registering": "Inscription en cours...",
+        "error": {
+          "unknown": "Une erreur inconnue est survenue.",
+          "unexpected": "Une erreur inattendue est survenue."
+        }
       }
   }

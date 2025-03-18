@@ -1,5 +1,5 @@
 import { auth } from "@/actions/auth";
-import { ModeToggle } from "@/components/ui/toggle-theme";
+import ModeToggle from "@/components/ui/toggle-theme";
 import { User } from "@/interface/user";
 
 export default async function Home() {

@@ -1,162 +1,242 @@
-'use client'
+"use client";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useRouter } from "next/navigation";
+import type React from "react";
+
 import { useState, useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Eye, EyeOff, Lock } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { CountryDropdown } from "./ui/country-dropdown";
 import { StartConfetti } from "@/lib/confetti";
+import { cn } from "@/lib/utils";
 import { RegisterFormData, registerSchema } from "@/schemas/auth";
 import { registerUser } from "@/actions/auth";
-import { CountryDropdown } from "./ui/country-dropdown"
+import { Icons } from "./spinner";
 
-export function RegisterForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
+export function RegisterForm() {
+  const t = useTranslations("Register");
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
-  const [selectedCountry, setSelectedCountry] = useState<string>("USA");
-  
-  const {
-    register,
-    handleSubmit,
-    setValue,
-    setError,
-    formState: { errors },
-  } = useForm<RegisterFormData>({
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
+
+  const form = useForm<RegisterFormData>({
     resolver: zodResolver(registerSchema),
+    defaultValues: {
+      email: "",
+      first_name: "",
+      last_name: "",
+      country: "FRA",
+      password: "",
+      passwordConfirm: "",
+    },
   });
 
-  const onSubmit = (data: RegisterFormData) => {
+  function onSubmit(data: RegisterFormData) {
+    setServerError(null);
+
     startTransition(async () => {
-      const response = await registerUser({ 
-        ...data, 
-        country: selectedCountry
-      });
+      try {
+        const response = await registerUser(data);
 
-      if (!response.success) {
-        setError("root.serverError", {
-          type: "server",
-          message: response.message,
-        });
-        return;
+        if (!response.success) {
+          setServerError(response.message ?? t("error.unknown"));
+          return;
+        }
+
+        StartConfetti();
+
+        setTimeout(() => {
+          router.push("/auth/login");
+        }, 2000);
+      } catch (error) {
+        setServerError(t("error.unexpected"));
       }
-
-      StartConfetti();
-
-      setTimeout(() => {
-        router.push("/auth/login");
-      }, 2000);
     });
-  };
+  }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn("flex flex-col gap-6", className)} {...props}>
-      <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Register a new account</h1>
+    <div className="grid gap-3">
+      <div className="flex flex-col items-center gap-2 text-center mb-6">
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your email below to register to your new account
+          {t("subtitle")}
         </p>
       </div>
-      {errors.root?.serverError && (
-        <div className="text-red-500">{errors.root.serverError.message}</div>
+
+      {serverError && (
+        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md mb-6">
+          {serverError}
+        </div>
       )}
-      <div className="grid gap-6">
-        <div className="grid gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input 
-          id="email" 
-          type="email" 
-          {...register("email")} 
-          placeholder="m@example.com" 
-          className={`${errors.email ? "border-red-500" : "border-gray-300"}`}
-          required />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="first_name">First Name</Label>
-          <Input 
-          id="first_name" 
-          type="text" 
-          {...register("first_name")} 
-          placeholder="John" 
-          className={`${errors.first_name ? "border-red-500" : "border-gray-300"}`}
-          required />
-          {errors.first_name && (
-            <p className="text-red-500 text-sm">{errors.first_name.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="last_Name">Last Name</Label>
-          <Input 
-          id="last_Name" 
-          type="text" 
-          {...register("last_name")} 
-          placeholder="Doe" 
-          className={`${errors.last_name ? "border-red-500" : "border-gray-300"}`}
-          required />
-          {errors.last_name && (
-            <p className="text-red-500 text-sm">{errors.last_name.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="country">Country</Label>
-          <CountryDropdown
-            placeholder="Select a country"
-            defaultValue={selectedCountry}
-            onChange={(value) => {
-              setSelectedCountry(value.alpha3);
-              setValue("country", value.alpha3);
-            }}
-          />
-          {errors.country && (
-            <p className="text-red-500 text-sm">{errors.country.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
+
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+          <div className="grid grid-cols-2 gap-4">
+            <FormField
+              control={form.control}
+              name="first_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("firstName")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t("firstNamePlaceholder")} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="last_name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>{t("lastName")}</FormLabel>
+                  <FormControl>
+                    <Input placeholder={t("lastNamePlaceholder")} {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
-          <Input id="password" {...register("password")} type="password" required 
-          className={` ${
-            errors.password ? "border-red-500" : "border-gray-300"
-          }`}/>
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <Label htmlFor="passwordConfirm">Confirm Password</Label>
-          <Input 
-          id="passwordConfirm" 
-          type="password" 
-          {...register("passwordConfirm")} 
-          className={`${errors.passwordConfirm ? "border-red-500" : "border-gray-300"}`}
-          required />
-          {errors.passwordConfirm && (
-            <p className="text-red-500 text-sm">{errors.passwordConfirm.message}</p>
-          )}
-        </div>
-        {isPending ? (
-          <p>Loading...</p>
-        ) : (
-          <Button type="submit" className="w-full">
-            Register
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("email")}</FormLabel>
+                <FormControl>
+                  <Input placeholder={t("emailPlaceholder")} {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="country"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Country</FormLabel>
+                <FormControl>
+                  <CountryDropdown
+                    placeholder={t("countryPlaceholder")}
+                    defaultValue={field.value}
+                    onChange={(value) => {
+                      field.onChange(value.alpha3);
+                    }}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("password")}</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      type={showPassword ? "text" : "password"}
+                      placeholder={t("passwordPlaceholder")}
+                      {...field}
+                      className="pl-9"
+                    />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                      onClick={() => setShowPassword(!showPassword)}
+                    >
+                      {showPassword ? (
+                        <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      ) : (
+                        <Eye className="h-4 w-4 text-muted-foreground" />
+                      )}
+                      <span className="sr-only">
+                        {showPassword ? "Hide password" : "Show password"}
+                      </span>
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+
+          <FormField
+            control={form.control}
+            name="passwordConfirm"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("passwordConfirm")}</FormLabel>
+                <FormControl>
+                  <div className="relative">
+                    <Input
+                      type={showConfirmPassword ? "text" : "password"}
+                      placeholder={t("passwordConfirmPlaceholder")}
+                      {...field}
+                      className="pl-9"
+                    />
+                    <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                    <Button
+                      type="button"
+                      variant="ghost"
+                      size="sm"
+                      className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
+                      onClick={() =>
+                        setShowConfirmPassword(!showConfirmPassword)
+                      }
+                    >
+                      {showConfirmPassword ? (
+                        <EyeOff className="h-4 w-4 text-muted-foreground" />
+                      ) : (
+                        <Eye className="h-4 w-4 text-muted-foreground" />
+                      )}
+                      <span className="sr-only">
+                        {showConfirmPassword
+                          ? "Hide password"
+                          : "Show password"}
+                      </span>
+                    </Button>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="w-full" disabled={isPending}>
+            {isPending && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            {t("register")}
           </Button>
-        )}
-      </div>
-      <div className="text-center text-sm">
-        Already have an account?{" "}
-        <a href="/auth/login" className="underline underline-offset-4">
-          Log In
-        </a>
-      </div>
-    </form>
-  )
+        </form>
+      </Form>
+    </div>
+  );
 }
