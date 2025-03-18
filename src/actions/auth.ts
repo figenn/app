@@ -8,7 +8,7 @@ const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 async function handleFetchResponse(response: Response) {
     try {
         const data = await response.json();
-        
+
         if (!response.ok) {       
             throw new Error(data.error);
         }

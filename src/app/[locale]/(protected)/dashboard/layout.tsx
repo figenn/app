@@ -9,7 +9,7 @@ export default async function AuthLayout({
   const user = await auth();
   return (
     <Suspense fallback={"loading"}>
-      <section>{children}</section>
+      <section className="bg-primary">{children}</section>
     </Suspense>
   );
 }

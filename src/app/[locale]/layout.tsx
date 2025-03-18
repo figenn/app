@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import QueryProvider from "@/providers/QueryProvider";
+import { Toaster } from "sonner";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,14 +24,15 @@ export default async function RootLayout({
     notFound();
   }
 
-  const queryClient = new QueryClient();
-
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body>
-        <NextIntlClientProvider>
-          <QueryProvider>{children}</QueryProvider>
-        </NextIntlClientProvider>
+        <Toaster richColors position="top-right" />
+        <ThemeProvider>
+          <NextIntlClientProvider>
+            <QueryProvider>{children}</QueryProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

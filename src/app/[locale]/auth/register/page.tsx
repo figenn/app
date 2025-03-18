@@ -1,22 +1,25 @@
-import Link from "next/link";
-import RegisterForm from "./form";
+import { GalleryVerticalEnd } from "lucide-react";
 
-export default function RegisterPage() {
+import { RegisterForm } from "@/components/register-form";
+import ModeToggle from "@/components/ui/toggle-theme";
+
+export default function LoginPage() {
   return (
-    <>
-      <div>
-        <h1>Inscription</h1>
-        <p>Create your account</p>
+    <div className="flex flex-col gap-4 p-6 md:p-10">
+      <div className="flex justify-between items-center">
+        <ModeToggle />
+        <div className="flex justify-center gap-2 md:justify-end">
+          <div className="bg-primary text-primary-foreground flex items-center justify-center rounded-md size-6">
+            <GalleryVerticalEnd className="size-4" />
+          </div>
+          Figenn.
+        </div>
       </div>
-      <RegisterForm />
-      <div>
-        <span>
-          Already have an account?{" "}
-          <Link className="underline" href={"/auth/login"}>
-            Login
-          </Link>
-        </span>
+      <div className="flex flex-1 items-center justify-center">
+        <div className="w-full min-w-[20rem] max-w-[23rem]">
+          <RegisterForm />
+        </div>
       </div>
-    </>
+    </div>
   );
 }

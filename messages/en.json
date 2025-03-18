@@ -2,5 +2,56 @@
     "HomePage": {
       "title": "Hello world!",
       "about": "Go to the about page"
+    },
+    "errors": {
+    "emailInvalid": "The email address is not valid.",
+    "passwordMinLength": "The password must be at least 8 characters long.",
+    "firstNameRequired": "First name is required.",
+    "firstNameMaxLength": "First name must not exceed 32 characters.",
+    "lastNameRequired": "Last name is required.",
+    "lastNameMaxLength": "Last name must not exceed 32 characters.",
+    "emailRequired": "Email address is required.",
+    "emailValid": "Email address must be valid.",
+    "emailNoPlus": "Email address must not contain '+'.",
+    "countryRequired": "Country is required.",
+    "countryMaxLength": "Country must not exceed 32 characters.",
+    "passwordRequired": "Password is required.",
+    "passwordMaxLength": "Password must not exceed 32 characters.",
+    "passwordRegex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+    "confirmPasswordRequired": "Password confirmation is required.",
+    "confirmPasswordMatch": "Passwords do not match."
+  },
+  "login": {
+    "title": "Login to your account",
+    "description": "Enter your email below to login to your account",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Login",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "success": "Login successful"
+  },
+  "Register": {
+    "title": "Create an account",
+    "subtitle": "Join us in just a few seconds.",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "country": "Country",
+    "countryPlaceholder": "Select your country",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "passwordConfirm": "Confirm Password",
+    "passwordConfirmPlaceholder": "Confirm your password",
+    "register": "Sign up",
+    "registering": "Signing up...",
+    "error": {
+      "unknown": "An unknown error occurred.",
+      "unexpected": "An unexpected error occurred."
     }
+  }
   }

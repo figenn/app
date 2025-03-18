@@ -2,5 +2,56 @@
     "HomePage": {
       "title": "Bonjour le monde!",
       "about": "Aller à la page à propos"
-    }
+    },
+    "errors": {
+        "emailInvalid": "L'adresse e-mail n'est pas valide.",
+        "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères.",
+        "firstNameRequired": "Le prénom est requis.",
+        "firstNameMaxLength": "Le prénom ne doit pas dépasser 32 caractères.",
+        "lastNameRequired": "Le nom de famille est requis.",
+        "lastNameMaxLength": "Le nom de famille ne doit pas dépasser 32 caractères.",
+        "emailRequired": "L'adresse e-mail est requise.",
+        "emailValid": "L'adresse e-mail doit être valide.",
+        "emailNoPlus": "L'adresse e-mail ne doit pas contenir de '+'.",
+        "countryRequired": "Le pays est requis.",
+        "countryMaxLength": "Le pays ne doit pas dépasser 32 caractères.",
+        "passwordRequired": "Le mot de passe est requis.",
+        "passwordMaxLength": "Le mot de passe ne doit pas dépasser 32 caractères.",
+        "passwordRegex": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.",
+        "confirmPasswordRequired": "La confirmation du mot de passe est requise.",
+        "confirmPasswordMatch": "Les mots de passe ne correspondent pas."
+      },
+    "login": {
+        "title": "Connectez-vous à votre compte",
+        "description": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "forgotPassword": "Mot de passe oublié ?",
+        "submit": "Se connecter",
+        "orContinueWith": "Ou continuez avec",
+        "google": "Google",
+        "success": "Connexion réussie"
+      },
+    "Register": {
+        "title": "Créer un compte",
+        "subtitle": "Rejoignez-nous en quelques secondes.",
+        "firstName": "Prénom",
+        "firstNamePlaceholder": "Entrez votre prénom",
+        "lastName": "Nom",
+        "lastNamePlaceholder": "Entrez votre nom",
+        "email": "Email",
+        "emailPlaceholder": "Entrez votre email",
+        "country": "Pays",
+        "countryPlaceholder": "Sélectionnez votre pays",
+        "password": "Mot de passe",
+        "passwordPlaceholder": "Entrez votre mot de passe",
+        "passwordConfirm": "Confirmer le mot de passe",
+        "passwordConfirmPlaceholder": "Confirmez votre mot de passe",
+        "register": "S'inscrire",
+        "registering": "Inscription en cours...",
+        "error": {
+          "unknown": "Une erreur inconnue est survenue.",
+          "unexpected": "Une erreur inattendue est survenue."
+        }
+      }
   }
