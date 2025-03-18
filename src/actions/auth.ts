@@ -5,15 +5,12 @@ import { cookies } from 'next/headers';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-if (!BACKEND_URL) {
-    throw new Error('NEXT_PUBLIC_BACKEND_URL environment variable is not set.');
-}
-
 async function handleFetchResponse(response: Response) {
     try {
         const data = await response.json();
-        if (!response.ok) {        
-            throw new Error(data.message || 'Une erreur est survenue.');
+        
+        if (!response.ok) {       
+            throw new Error(data.error);
         }
         return data;
     } catch (error) {
@@ -24,9 +21,14 @@ async function handleFetchResponse(response: Response) {
 export async function login(data: LoginFormData) {
     try {
         const cookieStore = cookies();
+        
+        const formData = new FormData();
+        formData.append('email', data.email);
+        formData.append('password', data.password);
+        
         const response = await fetch(`${BACKEND_URL}/auth/login`, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: formData,
         });
 
         const result = await handleFetchResponse(response);
@@ -46,9 +48,16 @@ export async function login(data: LoginFormData) {
 
 export async function registerUser(data: RegisterFormData) {
     try {
+        const formData = new FormData();
+        formData.append('email', data.email);
+        formData.append('password', data.password);
+        formData.append('first_name', data.first_name);
+        formData.append('last_name', data.last_name);
+        formData.append('country', data.country);
+        
         const response = await fetch(`${BACKEND_URL}/auth/register`, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: formData,
         });
 
         await handleFetchResponse(response);
@@ -61,9 +70,12 @@ export async function registerUser(data: RegisterFormData) {
 
 export async function forgotPassword(data: ForgotPasswordFormData) {
     try {
+        const formData = new FormData();
+        formData.append('email', data.email);
+
         const response = await fetch(`${BACKEND_URL}/auth/request-reset-password`, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: formData,
         });
 
         await handleFetchResponse(response);
