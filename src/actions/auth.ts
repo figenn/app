@@ -1,7 +1,6 @@
 'use server';
 
 import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/auth';
-import { log } from 'console';
 import { cookies } from 'next/headers';
 
 const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
@@ -10,23 +9,14 @@ if (!BACKEND_URL) {
     throw new Error('NEXT_PUBLIC_BACKEND_URL environment variable is not set.');
 }
 
-const DEFAULT_HEADERS = {
-    'Content-Type': 'application/json',
-};
-
 async function handleFetchResponse(response: Response) {
     try {
         const data = await response.json();
-        if (!response.ok) {
-            console.log(data, "bardella");
-            
+        if (!response.ok) {        
             throw new Error(data.message || 'Une erreur est survenue.');
         }
         return data;
     } catch (error) {
-        console.log(error, "bardella");
-        
-        console.error('Error processing response:', error);
         throw error;
     }
 }
@@ -36,7 +26,6 @@ export async function login(data: LoginFormData) {
         const cookieStore = cookies();
         const response = await fetch(`${BACKEND_URL}/auth/login`, {
             method: 'POST',
-            headers: DEFAULT_HEADERS,
             body: JSON.stringify(data),
         });
 
@@ -45,13 +34,12 @@ export async function login(data: LoginFormData) {
         (await cookieStore).set('token', result.token, {
             httpOnly: true,
             sameSite: 'strict',
-            maxAge: 3600,
+            maxAge: 60 * 60 * 24 * 7,
             path: '/',
         });
 
         return { success: true };
     } catch (error) {
-        console.error('Login failed:', error);
         return { success: false, message: (error as Error).message };
     }
 }
@@ -60,7 +48,6 @@ export async function registerUser(data: RegisterFormData) {
     try {
         const response = await fetch(`${BACKEND_URL}/auth/register`, {
             method: 'POST',
-            headers: DEFAULT_HEADERS,
             body: JSON.stringify(data),
         });
 
@@ -68,7 +55,6 @@ export async function registerUser(data: RegisterFormData) {
 
         return { success: true };
     } catch (error) {
-        console.log(error, "bardella")
         return { success: false, message: (error as Error).message };
     }
 }
@@ -77,7 +63,6 @@ export async function forgotPassword(data: ForgotPasswordFormData) {
     try {
         const response = await fetch(`${BACKEND_URL}/auth/request-reset-password`, {
             method: 'POST',
-            headers: DEFAULT_HEADERS,
             body: JSON.stringify(data),
         });
 
@@ -106,7 +91,6 @@ export async function logout() {
         (await cookieStore).delete('token');
         return { success: true };
     } catch (error) {
-        console.error('Logout failed:', error);
         return { success: false, message: (error as Error).message };
     }
 }
@@ -124,8 +108,14 @@ export async function auth() {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
         });
+        
+        const data = await response.json();
 
-        return await handleFetchResponse(response);
+        if (!response.ok) {
+            throw new Error(data.message || 'Une erreur est survenue.');
+        }
+
+        return data.user;
     } catch (error) {
         console.error('Authentication failed:', error);
         return null;
@@ -157,7 +147,6 @@ export async function resetPassword(data: ResetPasswordFormData, token: string) 
 
         const response = await fetch(`${BACKEND_URL}/auth/reset-password`, {
             method: 'POST',
-            headers: DEFAULT_HEADERS,
             body: JSON.stringify(requestBody),
         });
 

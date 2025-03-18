@@ -22,7 +22,9 @@ export default async function RootLayout({
   if (!hasLocale(routing.locales, locale)) {
     notFound();
   }
+
   const queryClient = new QueryClient();
+
   return (
     <html lang={locale}>
       <body>
