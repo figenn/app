@@ -20,5 +20,16 @@
         "passwordRegex": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.",
         "confirmPasswordRequired": "La confirmation du mot de passe est requise.",
         "confirmPasswordMatch": "Les mots de passe ne correspondent pas."
+      },
+    "login": {
+        "title": "Connectez-vous à votre compte",
+        "description": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "forgotPassword": "Mot de passe oublié ?",
+        "submit": "Se connecter",
+        "orContinueWith": "Ou continuez avec",
+        "google": "Google",
+        "success": "Connexion réussie"
       }
   }

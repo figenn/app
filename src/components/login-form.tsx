@@ -1,100 +1,128 @@
-'use client'
+"use client";
 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { useRouter } from "next/navigation";
 import { useTransition } from "react";
-import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { Button } from "@/components/ui/button";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Icons } from "./spinner";
+import { Separator } from "./ui/separator";
 import { LoginFormData, loginSchema } from "@/schemas/auth";
 import { login } from "@/actions/auth";
-import { ForgotPasswordForm } from "./forgot-password"
+import { toast } from "sonner";
+import { useTranslations } from "next-intl";
+import { ForgotPasswordForm } from "./forgot-password";
 
-export function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"form">) {
-    const router = useRouter();
-    const [isPending, startTransition] = useTransition();
-    const {
-      register,
-      handleSubmit,
-      setError,
-      formState: { errors },
-    } = useForm<LoginFormData>({
-      resolver: zodResolver(loginSchema),
+export default function LoginForm() {
+  const router = useRouter();
+  const t = useTranslations("login");
+  const [isPending, startTransition] = useTransition();
+
+  const form = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+    mode: "onChange",
+  });
+
+  const onSubmit = (data: LoginFormData) => {
+    startTransition(async () => {
+      const response = await login(data);
+
+      if (!response.success) {
+        toast.error(response.message);
+        return;
+      }
+
+      toast.success(t("success"));
+      router.push("/dashboard");
     });
-  
-    const onSubmit = (data: LoginFormData) => {
-      startTransition(async () => {
-        const response = await login(data);
-  
-        if (!response.success) {
-          setError("root.serverError", {
-            type: "server",
-            message: response.message,
-          });
-          return;
-        }
-  
-        router.push("/dashboard");
-      });
-    };
+  };
+
+  const formControlProps = (field: any, placeholder: string, type: string) => ({
+    ...field,
+    placeholder,
+    type,
+    autoCapitalize: "none",
+    autoComplete: type === "password" ? "current-password" : "email",
+    autoCorrect: "off",
+    disabled: isPending,
+  });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className="grid gap-6">
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
+        <h1 className="text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your email below to login to your account
+          {t("description")}
         </p>
       </div>
-      {errors.root?.serverError && (
-        <div className="text-red-500">{errors.root.serverError.message}</div>
-      )}
-      <div className="grid gap-6">
-        <div className="grid gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input 
-          id="email" 
-          type="email" 
-          {...register("email")} 
-          placeholder="m@example.com" 
-          className={`${errors.email ? "border-red-500" : "border-gray-300"}`}
-          required />
-          {errors.email && (
-            <p className="text-red-500 text-sm">{errors.email.message}</p>
-          )}
-        </div>
-        <div className="grid gap-3">
-          <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
-            <ForgotPasswordForm />
-          </div>
-          <Input id="password" {...register("password")} type="password" required 
-          className={` ${
-            errors.password ? "border-red-500" : "border-gray-300"
-          }`}/>
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}
-        </div>
-        {isPending ? (
-          <p>Loading...</p>
-        ) : (
-          <Button type="submit" className="w-full">
-            Login
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>{t("email")}</FormLabel>
+                <FormControl>
+                  <Input
+                    {...formControlProps(field, "exemple@email.com", "email")}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="password"
+            render={({ field }) => (
+              <FormItem>
+                <div className="flex items-center justify-between">
+                  <FormLabel>{t("password")}</FormLabel>
+                  <ForgotPasswordForm />
+                </div>
+                <FormControl>
+                  <Input {...formControlProps(field, "••••••••", "password")} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Button type="submit" className="w-full" disabled={isPending}>
+            {isPending && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
+            {t("submit")}
           </Button>
-        )}
+        </form>
+      </Form>
+      <div className="relative">
+        <div className="absolute inset-0 flex items-center">
+          <Separator className="w-full" />
+        </div>
+        <div className="relative flex justify-center text-xs uppercase">
+          <span className="bg-background px-2 text-muted-foreground">
+            {t("orContinueWith")}
+          </span>
+        </div>
       </div>
-      <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
-        <a href="/auth/register" className="underline underline-offset-4">
-          Sign up
-        </a>
-      </div>
-    </form>
-  )
+      <Button variant="outline" type="button" className="w-full">
+        <Icons.google className="mr-2 h-4 w-4" />
+        {t("google")}
+      </Button>
+    </div>
+  );
 }

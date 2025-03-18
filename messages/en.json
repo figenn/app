@@ -20,5 +20,16 @@
     "passwordRegex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
     "confirmPasswordRequired": "Password confirmation is required.",
     "confirmPasswordMatch": "Passwords do not match."
+  },
+  "login": {
+    "title": "Login to your account",
+    "description": "Enter your email below to login to your account",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot your password?",
+    "submit": "Login",
+    "orContinueWith": "Or continue with",
+    "google": "Google",
+    "success": "Login successful"
   }
   }
