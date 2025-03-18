@@ -157,9 +157,13 @@ export async function resetPassword(data: ResetPasswordFormData, token: string) 
             token,
         };
 
+        const formData = new FormData();
+        formData.append('password', data.password);
+        formData.append('token', token);
+
         const response = await fetch(`${BACKEND_URL}/auth/reset-password`, {
             method: 'POST',
-            body: JSON.stringify(requestBody),
+            body: JSON.stringify(formData),
         });
 
         await handleFetchResponse(response);

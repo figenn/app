@@ -72,7 +72,7 @@ export function RegisterForm() {
 
   return (
     <div className="grid gap-3">
-      <div className="flex flex-col items-center gap-2 text-center mb-6">
+      <div className="flex flex-col items-center gap-2 text-center mb-2">
         <h1 className="text-2xl font-bold">{t("title")}</h1>
         <p className="text-muted-foreground text-sm text-balance">
           {t("subtitle")}
@@ -80,7 +80,7 @@ export function RegisterForm() {
       </div>
 
       {serverError && (
-        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md mb-6">
+        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md mb-2">
           {serverError}
         </div>
       )}

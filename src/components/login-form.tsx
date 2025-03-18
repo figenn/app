@@ -69,11 +69,13 @@ export default function LoginForm() {
           {t("description")}
         </p>
       </div>
+
       {serverError && (
-        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md">
+        <div className="bg-destructive/15 text-destructive text-sm p-3 rounded-md mb-2">
           {serverError}
         </div>
       )}
+
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
           <FormField
