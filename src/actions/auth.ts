@@ -120,7 +120,7 @@ export async function auth() {
             return null;
         }
 
-        const response = await fetch(`${BACKEND_URL}/auth`, {
+        const response = await fetch(`${BACKEND_URL}/user/me`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
         });
