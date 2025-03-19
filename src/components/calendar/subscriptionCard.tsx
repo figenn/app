@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo } from "react";
+import type React from "react";
+import { useMemo } from "react";
 import {
   HoverCard,
   HoverCardContent,
@@ -9,7 +10,7 @@ import {
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { formatDistanceToNow, format } from "date-fns";
 import { fr, enUS } from "date-fns/locale";
-import { Subscription } from "@/interface/subscription";
+import type { Subscription } from "@/interface/subscription";
 import { useLocale, useTranslations } from "next-intl";
 
 interface SubscriptionCardProps {
@@ -49,10 +50,10 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
     <HoverCard>
       <HoverCardTrigger asChild>
         <div
-          className="flex items-center rounded-md p-1 cursor-pointer shadow-sm text-black"
+          className="flex items-center rounded-md p-1.5 cursor-pointer shadow-sm text-black transition-all duration-200 hover:shadow-md hover:scale-105 active:scale-95"
           style={{ backgroundColor: subscription.color }}
         >
-          <Avatar className="h-5 w-5 mr-2">
+          <Avatar className="h-5 w-5 mr-2 transition-transform duration-200 group-hover:scale-110">
             <AvatarImage
               className="bg-white p-[1px] rounded-full"
               src={subscription.logo_url || ""}
@@ -64,45 +65,57 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
           </span>
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className="w-80 p-4">
-        <div className="flex justify-between">
-          <div className="flex items-center">
-            <Avatar className="h-10 w-10">
-              <AvatarImage
-                className="bg-white p-1 rounded-md"
-                src={subscription.logo_url || ""}
-                alt={subscription.name}
-              />
-            </Avatar>
-            <div className="ml-3">
-              <h3 className="text-lg font-semibold">{subscription.name}</h3>
-              <p className="text-sm text-muted-foreground">
-                {subscription.category}
+      <HoverCardContent className="w-80 p-0 overflow-hidden shadow-lg">
+        <div
+          className="h-1.5"
+          style={{ backgroundColor: subscription.color }}
+        ></div>
+        <div className="p-4">
+          <div className="flex justify-between">
+            <div className="flex items-center">
+              <Avatar className="h-10 w-10 ring-2 transition-all duration-200">
+                <AvatarImage
+                  className="bg-white p-1 rounded-md"
+                  src={subscription.logo_url || ""}
+                  alt={subscription.name}
+                />
+              </Avatar>
+              <div className="ml-3">
+                <h3 className="text-lg font-semibold">{subscription.name}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {subscription.category}
+                </p>
+              </div>
+            </div>
+            <div className="text-right">
+              <p className="text-lg font-bold">
+                {formatPrice(locale, subscription.price)}
+              </p>
+              <p className="text-xs text-muted-foreground">
+                {t("billingCycle", { cycle: subscription.billing_cycle })}
               </p>
             </div>
           </div>
-          <div className="text-right">
-            <p className="text-lg font-bold">
-              {formatPrice(locale, subscription.price)}
-            </p>
-            <p className="text-xs text-muted-foreground">
-              {t("billingCycle", { cycle: subscription.billing_cycle })}
-            </p>
-          </div>
-        </div>
-        <div className="mt-4">
-          <p className="text-sm text-muted-foreground">
-            {subscription.description}
-          </p>
-        </div>
-        <div className="mt-3 pt-3 border-t border-border">
-          <div className="flex justify-between text-xs text-muted-foreground">
-            <span>
-              {t("started")} {formattedDate}
-            </span>
-            <span>
-              {t("billingOn")} {formatMonthDay(locale, subscription.start_date)}
-            </span>
+
+          {subscription.description && (
+            <div className="mt-4">
+              <p className="text-sm text-muted-foreground line-clamp-3">
+                {subscription.description}
+              </p>
+            </div>
+          )}
+
+          <div className="mt-3 pt-3 border-t border-border">
+            <div className="flex justify-between text-xs text-muted-foreground">
+              <span className="flex items-center">
+                <span className="inline-block w-2 h-2 rounded-full mr-1.5 bg-green-500"></span>
+                {t("started")} {formattedDate}
+              </span>
+              <span>
+                {t("billingOn")}{" "}
+                {formatMonthDay(locale, subscription.start_date)}
+              </span>
+            </div>
           </div>
         </div>
       </HoverCardContent>

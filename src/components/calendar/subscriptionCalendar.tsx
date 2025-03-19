@@ -13,13 +13,15 @@ import { Card } from "@/components/ui/card";
 import SubscriptionCard from "./subscriptionCard";
 import { useLocale, useTranslations } from "next-intl";
 import { Skeleton } from "../ui/skeleton";
+import { Dialog } from "@/components/ui/dialog";
+import { SubscriptionModal } from "./createSubscriptionForm";
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
   const [date, setDate] = useState(new Date());
-  const locale = useLocale();
   const t = useTranslations("calendar");
+  const locale = useLocale();
 
   const formattedDate = useMemo(
     () => ({
@@ -98,6 +100,9 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
           >
             <ChevronRight className="h-4 w-4" />
           </Button>
+          <Dialog>
+            <SubscriptionModal bearer={bearer} />
+          </Dialog>
         </div>
       </div>
 

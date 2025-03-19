@@ -61,5 +61,33 @@
   },
   "calendar": {
     "title": "Subscription calendar"
+  },
+  "subscription": {
+    "form": {
+      "new_subscription": "New Subscription",
+      "second_title" : "Add a new subscription to your list",
+      "service_name": "Service Name",
+      "category": "Category",
+      "description": "Description",
+      "description_placeholder": "Describe your subscription...",
+      "start_date": "Start Date",
+      "price": "Price",
+      "color": "Color",
+      "button": "Add Subscription",
+      "loading": "Creating...",
+      "billing_cycle": "Billing Cycle",
+      "billing_month": "Month",
+      "billing_month_detail": "Billed every month",
+      "billing_quarter": "Quarter",
+      "billing_quarter_detail": "Billed every quarter",
+      "billing_year": "Year",
+      "billing_year_detail": "Billed every year",
+      "create_subscription": "Create Subscription",
+      "select_date": "Select Date",
+      "select_price": "Enter Price",
+      "placeholder_description": "Describe your subscription...",
+      "service_placeholder": "Enter service name",
+      "no_results": "No service found. Try another search name."
+    }
   }
-  }
+}

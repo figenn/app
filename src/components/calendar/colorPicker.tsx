@@ -1,0 +1,131 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import {
+  FormField,
+  FormItem,
+  FormLabel,
+  FormControl,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import type { Control } from "react-hook-form";
+import { Check, ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { useTranslations } from "next-intl";
+
+interface ColorPickerProps {
+  form: {
+    control: Control<any>;
+  };
+}
+
+const presetColors = [
+  "#ef4444", // red
+  "#f97316", // orange
+  "#f59e0b", // amber
+  "#84cc16", // lime
+  "#10b981", // emerald
+  "#06b6d4", // cyan
+  "#3b82f6", // blue
+  "#6366f1", // indigo
+  "#8b5cf6", // violet
+  "#d946ef", // fuchsia
+  "#ec4899", // pink
+  "#64748b", // slate
+];
+
+export default function ColorPicker({ form }: ColorPickerProps) {
+  const [open, setOpen] = useState(false);
+  const [selectedColor, setSelectedColor] = useState<string | null>(null);
+  const t = useTranslations("subscription.form");
+
+  useEffect(() => {
+    const subscription = form.control._formState.defaultValues?.color;
+    if (subscription) {
+      setSelectedColor(subscription);
+    }
+  }, [form.control._formState.defaultValues?.color]);
+
+  return (
+    <FormField
+      control={form.control}
+      name="color"
+      render={({ field }) => (
+        <FormItem>
+          <FormLabel>{t("color")}</FormLabel>
+          <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+              <FormControl>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-between border-input",
+                    !field.value && "text-muted-foreground"
+                  )}
+                >
+                  <div className="flex items-center gap-2">
+                    <div
+                      className="h-4 w-4 rounded-full"
+                      style={{ backgroundColor: field.value || "#000000" }}
+                    />
+                    <span>{field.value || "Choisir une couleur"}</span>
+                  </div>
+                  <ChevronDown className="h-4 w-4 opacity-50" />
+                </Button>
+              </FormControl>
+            </PopoverTrigger>
+            <PopoverContent className="w-64 p-3">
+              <div className="grid grid-cols-6 gap-2 mb-3">
+                {presetColors.map((color) => (
+                  <button
+                    key={color}
+                    type="button"
+                    className={cn(
+                      "h-8 w-8 rounded-full flex items-center justify-center",
+                      field.value === color && "ring-2 ring-offset-2 ring-ring"
+                    )}
+                    style={{ backgroundColor: color }}
+                    onClick={() => {
+                      field.onChange(color);
+                      setSelectedColor(color);
+                      setOpen(false);
+                    }}
+                  >
+                    {field.value === color && (
+                      <Check className="h-4 w-4 text-white" />
+                    )}
+                  </button>
+                ))}
+              </div>
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <div
+                    className="h-8 w-8 rounded-full border"
+                    style={{ backgroundColor: field.value }}
+                  />
+                  <Input
+                    type="color"
+                    value={field.value}
+                    onChange={(e) => {
+                      field.onChange(e.target.value);
+                      setSelectedColor(e.target.value);
+                    }}
+                    className="h-8 w-full"
+                  />
+                </div>
+              </div>
+            </PopoverContent>
+          </Popover>
+          <FormMessage />
+        </FormItem>
+      )}
+    />
+  );
+}

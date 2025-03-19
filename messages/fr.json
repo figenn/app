@@ -61,5 +61,35 @@
     },
     "calendar": {
       "title": "Calendrier des abonnements"
+    },
+    "subscription": {
+    "form": {
+      "new_subscription": "Nouvel abonnement",
+      "second_title" : "Ajouter un nouvel abonnement à votre liste",
+      "service_name": "Nom du service",
+      "category": "Catégorie",
+      "description": "Description",
+      "description_placeholder": "Décrivez votre abonnement...",
+      "start_date": "Date de début",
+      "price": "Prix",
+      "color": "Couleur",
+      "button": "Ajouter un abonnement",
+      "loading": "Creation...",
+      "billing_cycle": "Cycle de facturation",
+      "billing_month": "Mois",
+      "billing_month_detail": "Facturé chaque mois",
+      "billing_quarter": "Trimestre",
+      "billing_quarter_detail": "Facturation tout les 3 mois",
+      "billing_year": "Année",
+      "billing_year_detail": "Facturé une fois par an",
+      "create_subscription": "Créer l'abonnement",
+      "select_category": "Sélectionner la catégorie",
+      "select_date": "Sélectionner une date",
+      "select_price": "Entrez le prix",
+      "placeholder_name": "Netflix, Spotify, etc.",
+      "placeholder_description": "Décrivez votre abonnement...",
+      "service_placeholder": "Enter service name",
+      "no_results": "Aucun service trouvé. Essayez un autre nom de recherche."
     }
+  }
 }
