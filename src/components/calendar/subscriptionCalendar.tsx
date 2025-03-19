@@ -55,6 +55,13 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
     queryFn: fetchSubscriptions,
   });
 
+  const weekDays = Array.from({ length: 7 }, (_, day) => {
+    const adjustedDay = (day + 1) % 7;
+    return new Date(2023, 0, adjustedDay + 1).toLocaleDateString(locale, {
+      weekday: "short",
+    });
+  });
+
   const calendarDays = useMemo(
     () =>
       isLoading
@@ -107,11 +114,12 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
       </div>
 
       <div className="grid grid-cols-7 gap-2">
-        {Array.from({ length: 7 }, (_, day) => (
-          <div key={day} className="text-center font-medium text-gray-600 py-2">
-            {new Date(2023, 0, day + 1).toLocaleDateString(locale, {
-              weekday: "short",
-            })}
+        {weekDays.map((day, index) => (
+          <div
+            key={index}
+            className="text-center font-medium text-gray-600 py-2"
+          >
+            {day}
           </div>
         ))}
         {isLoading
