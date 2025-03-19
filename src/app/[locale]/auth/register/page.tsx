@@ -15,7 +15,7 @@ export default function LoginPage() {
           Figenn.
         </div>
       </div>
-      <div className="flex flex-1 items-center justify-center">
+      <div className="flex mt-10 items-center justify-center">
         <div className="w-full min-w-[20rem] max-w-[23rem]">
           <RegisterForm />
         </div>
