@@ -95,5 +95,9 @@
       "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
       "chooseColor": "Choisissez une couleur"
     }
+  },
+  "sidebar": {
+    "upgrade": "Mettre à niveau",
+    "logout": "Deconnexion"
   }
 }

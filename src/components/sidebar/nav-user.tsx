@@ -1,8 +1,6 @@
 "use client";
 
 import { ChevronsUpDown, LogOut, Sparkles } from "lucide-react";
-
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,10 +17,11 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 import { User } from "@/interface/user";
+import { useTranslations } from "next-intl";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();
-
+  const t = useTranslations("sidebar");
   return (
     <SidebarMenu>
       <SidebarMenuItem>
@@ -71,13 +70,13 @@ export function NavUser({ user }: { user: User }) {
             <DropdownMenuGroup>
               <DropdownMenuItem>
                 <Sparkles />
-                Upgrade Plan
+                {t("upgrade")}
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
             <DropdownMenuItem>
               <LogOut />
-              Log out
+              {t("logout")}
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

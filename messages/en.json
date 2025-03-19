@@ -93,5 +93,9 @@
       "no_results": "No service found. Try another search name.",
       "chooseColor": "Choose color"
     }
+  },
+  "sidebar": {
+    "upgrade": "Upgrade Plan",
+    "logout": "LogOut"
   }
 }
