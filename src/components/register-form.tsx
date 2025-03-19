@@ -25,7 +25,7 @@ import { StartConfetti } from "@/lib/confetti";
 import { cn } from "@/lib/utils";
 import { RegisterFormData, registerSchema } from "@/schemas/auth";
 import { registerUser } from "@/actions/auth";
-import { Icons } from "./spinner";
+import { Icons } from "./icons";
 
 export function RegisterForm() {
   const t = useTranslations("Register");

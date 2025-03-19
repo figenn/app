@@ -53,5 +53,13 @@
       "unknown": "An unknown error occurred.",
       "unexpected": "An unexpected error occurred."
     }
+  },
+  "SubscriptionCard": {
+    "billingCycle": "{cycle}",
+    "started": "Started",
+    "billingOn": "Billing on"
+  },
+  "calendar": {
+    "title": "Subscription calendar"
   }
   }

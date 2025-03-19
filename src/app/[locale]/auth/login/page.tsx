@@ -1,5 +1,4 @@
 import LoginForm from "@/components/login-form";
-import { Icons } from "@/components/spinner";
 import ModeToggle from "@/components/ui/toggle-theme";
 import { GalleryVerticalEnd } from "lucide-react";
 
