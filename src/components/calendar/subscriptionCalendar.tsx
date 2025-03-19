@@ -20,8 +20,8 @@ const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
 const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
   const [date, setDate] = useState(new Date());
-  const t = useTranslations("calendar");
   const locale = useLocale();
+  const t = useTranslations("calendar");
 
   const formattedDate = useMemo(
     () => ({
@@ -31,17 +31,24 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
     [date, locale]
   );
 
+  const weekDays = useMemo(
+    () =>
+      Array.from({ length: 7 }, (_, day) =>
+        new Date(2023, 0, ((day + 1) % 7) + 1).toLocaleDateString(locale, {
+          weekday: "short",
+        })
+      ),
+    [locale]
+  );
+
   const fetchSubscriptions = useCallback(async () => {
     try {
       const response = await fetch(
         `${API_URL}/subscriptions/active?year=${date.getFullYear()}&month=${
           date.getMonth() + 1
         }`,
-        {
-          headers: { Authorization: `Bearer ${bearer}` },
-        }
+        { headers: { Authorization: `Bearer ${bearer}` } }
       );
-
       if (!response.ok) throw new Error("Failed to fetch subscriptions");
       return response.json();
     } catch (error) {
@@ -67,11 +74,13 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
     [date, subscriptions, isLoading]
   );
 
-  const navigateMonth = useCallback((increment: number) => {
-    setDate(
-      (prev) => new Date(prev.getFullYear(), prev.getMonth() + increment, 1)
-    );
-  }, []);
+  const navigateMonth = useCallback(
+    (increment: number) =>
+      setDate(
+        (prev) => new Date(prev.getFullYear(), prev.getMonth() + increment, 1)
+      ),
+    []
+  );
 
   return (
     <Card className="p-4 md:p-6">
@@ -107,11 +116,12 @@ const SubscriptionCalendar = ({ bearer }: { bearer: string | undefined }) => {
       </div>
 
       <div className="grid grid-cols-7 gap-2">
-        {Array.from({ length: 7 }, (_, day) => (
-          <div key={day} className="text-center font-medium text-gray-600 py-2">
-            {new Date(2023, 0, day + 1).toLocaleDateString(locale, {
-              weekday: "short",
-            })}
+        {weekDays.map((day, index) => (
+          <div
+            key={index}
+            className="text-center font-medium text-gray-600 py-2"
+          >
+            {day}
           </div>
         ))}
         {isLoading
