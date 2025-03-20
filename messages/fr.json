@@ -1,7 +1,6 @@
 {
-  "HomePage": {
-    "title": "Bonjour le monde!",
-    "about": "Aller à la page à propos"
+  "common": {
+      "hello": "Bonjour"
   },
   "LocaleSwitcher": {
     "label": "Change language",
@@ -63,11 +62,11 @@
       "started": "Démarré",
       "billingOn": "Facturation le"
     },
-    "subscription": {
+  "subscription": {
       "calendar": {
         "title": "Calendrier des abonnements"
       },
-    "form": {
+      "form": {
       "new_subscription": "Nouvel abonnement",
       "second_title" : "Ajouter un nouvel abonnement à votre liste",
       "service_name": "Nom du service",
@@ -96,5 +95,9 @@
       "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
       "chooseColor": "Choisissez une couleur"
     }
+  },
+  "sidebar": {
+    "upgrade": "Mettre à niveau",
+    "logout": "Deconnexion"
   }
 }
