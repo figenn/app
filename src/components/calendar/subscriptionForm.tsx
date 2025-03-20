@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query"; // Import useQueryClient
 import { CalendarIcon, Loader2, Plus } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -44,23 +44,30 @@ import {
 } from "@/schemas/subscription";
 import SearchService from "./search-service";
 import { toast } from "sonner";
-import ColorPicker from "./colorPicker";
-import BillingCycleSelect from "./billingCycle";
+
 import { format } from "date-fns";
 import { useDateLocale } from "@/hooks/useDateLocale";
 import { CategoriePicker } from "@/utils/categorieUtils";
 import { useTranslations } from "next-intl";
 import { useCurrencyLocale } from "@/hooks/useCurrencyLocale";
+import BillingCycleSelect from "./billingCycle";
+import ColorPicker from "./colorPicker";
 
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
 
-export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
+export function SubscriptionModal({
+  bearer,
+  currentMonth,
+}: {
+  bearer: string | undefined;
+  currentMonth: Date;
+}) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedLogo, setSelectedLogo] = useState<string | null>(null);
   const dateLocale = useDateLocale();
   const currency = useCurrencyLocale(navigator.language);
   const t = useTranslations("subscription.form");
-  console.log(navigator.language);
+  const queryClient = useQueryClient(); // Obtenir queryClient
 
   const form = useForm<SubscriptionFormValues>({
     resolver: zodResolver(formSubscriptionSchema),
@@ -96,6 +103,9 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
       setIsOpen(false);
       form.reset();
       setSelectedLogo(null);
+      queryClient.invalidateQueries({
+        queryKey: ["subscriptions", currentMonth.toISOString()],
+      });
     },
     onError: () => {
       toast.error("Erreur lors de la création de l'abonnement");

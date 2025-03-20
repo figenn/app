@@ -152,11 +152,6 @@ export async function BearerToken() {
 
 export async function resetPassword(data: ResetPasswordFormData, token: string) {
     try {
-        const requestBody = {
-            ...data,
-            token,
-        };
-
         const formData = new FormData();
         formData.append('password', data.password);
         formData.append('token', token);

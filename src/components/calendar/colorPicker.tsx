@@ -20,12 +20,6 @@ import { Check, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
-interface ColorPickerProps {
-  form: {
-    control: Control<any>;
-  };
-}
-
 const presetColors = [
   "#f9a5a5", // pastel red
   "#f7bb7f", // pastel orange
@@ -40,7 +34,20 @@ const presetColors = [
   "#f7a9cb", // pastel pink
   "#a0b3c4", // pastel slate
 ];
-
+interface ColorPickerProps {
+  form: {
+    control: Control<{
+      color: string;
+      name: string;
+      billing_cycle: "monthly" | "quarterly" | "annual";
+      start_date: string;
+      price: number;
+      category?: string;
+      description?: string;
+      logo_url?: string;
+    }>;
+  };
+}
 export default function ColorPicker({ form }: ColorPickerProps) {
   const [open, setOpen] = useState(false);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
@@ -67,15 +74,15 @@ export default function ColorPicker({ form }: ColorPickerProps) {
                   variant="outline"
                   className={cn(
                     "w-full justify-between border-input",
-                    !field.value && "text-muted-foreground"
+                    !selectedColor && "text-muted-foreground"
                   )}
                 >
                   <div className="flex items-center gap-2">
                     <div
                       className="h-4 w-4 rounded-full"
-                      style={{ backgroundColor: field.value || "#000000" }}
+                      style={{ backgroundColor: selectedColor || "#000000" }}
                     />
-                    <span>{field.value || "Choisir une couleur"}</span>
+                    <span>{selectedColor || t("chooseColor")}</span>
                   </div>
                   <ChevronDown className="h-4 w-4 opacity-50" />
                 </Button>

@@ -1,6 +1,6 @@
 "use client";
 
-import type { Control } from "react-hook-form";
+import type { UseFormReturn } from "react-hook-form";
 import {
   FormField,
   FormItem,
@@ -14,9 +14,16 @@ import { CalendarClock, CalendarDays, CalendarRange } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 interface BillingCycleSelectProps {
-  form: {
-    control: Control<any>;
-  };
+  form: UseFormReturn<{
+    name: string;
+    color: string;
+    start_date: string;
+    price: number;
+    billing_cycle: "monthly" | "quarterly" | "annual";
+    category?: string;
+    description?: string;
+    logo_url?: string;
+  }>;
 }
 
 const billingOptions = [

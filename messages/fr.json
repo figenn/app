@@ -59,10 +59,10 @@
       "started": "Démarré",
       "billingOn": "Facturation le"
     },
-    "calendar": {
-      "title": "Calendrier des abonnements"
-    },
     "subscription": {
+      "calendar": {
+        "title": "Calendrier des abonnements"
+      },
     "form": {
       "new_subscription": "Nouvel abonnement",
       "second_title" : "Ajouter un nouvel abonnement à votre liste",
@@ -89,7 +89,8 @@
       "placeholder_name": "Netflix, Spotify, etc.",
       "placeholder_description": "Décrivez votre abonnement...",
       "service_placeholder": "Enter service name",
-      "no_results": "Aucun service trouvé. Essayez un autre nom de recherche."
+      "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
+      "chooseColor": "Choisissez une couleur"
     }
   }
 }
