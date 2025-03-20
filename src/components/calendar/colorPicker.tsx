@@ -27,18 +27,18 @@ interface ColorPickerProps {
 }
 
 const presetColors = [
-  "#ef4444", // red
-  "#f97316", // orange
-  "#f59e0b", // amber
-  "#84cc16", // lime
-  "#10b981", // emerald
-  "#06b6d4", // cyan
-  "#3b82f6", // blue
-  "#6366f1", // indigo
-  "#8b5cf6", // violet
-  "#d946ef", // fuchsia
-  "#ec4899", // pink
-  "#64748b", // slate
+  "#f9a5a5", // pastel red
+  "#f7bb7f", // pastel orange
+  "#f7d277", // pastel amber
+  "#b6f798", // pastel lime
+  "#7fe4c7", // pastel emerald
+  "#7de0e7", // pastel cyan
+  "#90c6f7", // pastel blue
+  "#a5a8f3", // pastel indigo
+  "#c5a8f7", // pastel violet
+  "#f7a7df", // pastel fuchsia
+  "#f7a9cb", // pastel pink
+  "#a0b3c4", // pastel slate
 ];
 
 export default function ColorPicker({ form }: ColorPickerProps) {
