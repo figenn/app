@@ -46,8 +46,8 @@ export default function CalendarWidget({
   });
 
   return (
-    <div className="flex flex-col items-center justify-center p-4 min-h-screen">
-      <Card className="w-[90%] max-w-4xl">
+    <div className="flex flex-col items-center justify-center">
+      <Card className="w-[90%]">
         <CardHeader>
           <div className="flex justify-between items-center">
             <CardTitle className="text-2xl font-semibold">

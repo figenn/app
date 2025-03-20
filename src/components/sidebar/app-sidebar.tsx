@@ -1,36 +1,27 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import {
-  Pi,
-  WalletCards,
-} from "lucide-react"
+import * as React from "react";
+import { Pi, WalletCards } from "lucide-react";
 
-import { NavMain } from "@/components/sidebar/nav-main"
-import { NavUser } from "@/components/sidebar/nav-user"
-import { TeamSwitcher } from "@/components/sidebar/team-switcher"
+import { NavMain } from "@/components/sidebar/nav-main";
+import { NavUser } from "@/components/sidebar/nav-user";
+import { TeamSwitcher } from "@/components/sidebar/team-switcher";
 import {
   Sidebar,
   SidebarContent,
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from "@/components/ui/sidebar"
+} from "@/components/ui/sidebar";
+import { User } from "@/interface/user";
 
-// This is sample data.
 const data = {
-  user: {
-    name: "Enzo",
-    email: "enzogreneche@gmail.com",
-    avatar: "/avatars/shadcn.jpg",
+  team: {
+    name: "Figenn",
+    logo: Pi,
+    url: "/",
+    plan: "Premium Plan",
   },
-  team:
-    {
-      name: "Figenn",
-      logo: Pi,
-      url: "/",
-      plan: "Premium Plan",
-    },
   navMain: [
     {
       title: "Abonnements",
@@ -39,9 +30,13 @@ const data = {
       isActive: true,
     },
   ],
+};
+
+interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
+  user: User;
 }
 
-export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -51,9 +46,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser user={data.user} />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
-  )
+  );
 }
