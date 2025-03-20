@@ -18,7 +18,6 @@ export async function SiteHeader({ user }: { user: User }) {
       <div>
         <ModeToggle />
       </div>
-      <ModeToggle />
     </header>
   );
 }
