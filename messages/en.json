@@ -3,6 +3,10 @@
       "title": "Hello world!",
       "about": "Go to the about page"
     },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, fr {🇫🇷 French} en {🇺🇸 English} other {Unknown}}"
+  },
     "errors": {
     "emailInvalid": "The email address is not valid.",
     "passwordMinLength": "The password must be at least 8 characters long.",
