@@ -1,7 +1,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { formatMonthYear } from "@/utils/calendarUtils";
-import { CalendarHeaderProps } from "@/interface/calendar";
+import { CalendarHeaderProps } from "@/interfaces/Calendar";
 
 const CalendarHeader = ({
   currentMonth,

@@ -5,7 +5,7 @@ import {
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { EventDetailsPopoverProps } from "@/interface/calendar";
+import { EventDetailsPopoverProps } from "@/interfaces/Calendar";
 
 export const EventDetailsPopover = ({
   event,

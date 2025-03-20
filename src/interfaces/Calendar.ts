@@ -1,4 +1,4 @@
-import { CalendarEvent, Subscription } from "@/interface/subscription";
+import { CalendarEvent, Subscription } from "@/interfaces/Subscription";
 
 export type CalendarSize = "small" | "medium";
 

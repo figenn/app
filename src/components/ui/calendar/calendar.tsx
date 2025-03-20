@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { CalendarEvent } from "@/interface/subscription";
+import { CalendarEvent } from "@/interfaces/Subscription";
 import {
   getCalendarDays,
   getNextMonth,
@@ -13,7 +13,7 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import CalendarHeader from "./calendarHeader";
 import CalendarDay from "./calendarDay";
 import { useLocale } from "next-intl";
-import { CalendarProps } from "@/interface/calendar";
+import { CalendarProps } from "@/interfaces/Calendar";
 
 const Calendar = ({
   subscriptions,

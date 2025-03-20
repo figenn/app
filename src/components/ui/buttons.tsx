@@ -1,14 +1,16 @@
-"use client";
-
 import { logout } from "@/actions/auth";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
-export const LogoutButton = () => {
-  const router = useRouter();
-  const handleLogout = async () => {
-    await logout();
-    router.push("/");
-  };
+async function logoutAction() {
+  "use server";
+  await logout();
+  redirect("/auth/login");
+}
 
-  return <button onClick={handleLogout}>Logout</button>;
-};
+export default async function LogoutButton() {
+  return (
+    <form action={logoutAction}>
+      <button type="submit">Logout</button>
+    </form>
+  );
+}

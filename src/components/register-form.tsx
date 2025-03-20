@@ -20,7 +20,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CountryDropdown } from "./ui/country-dropdown";
 import { StartConfetti } from "@/lib/confetti";
-import { RegisterFormData, registerSchema } from "@/schemas/auth";
+import { RegisterFormData, registerSchema } from "@/schemas/Auth";
 import { registerUser } from "@/actions/auth";
 import Loader from "./ui/loader";
 

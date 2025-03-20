@@ -1,10 +1,10 @@
 import { isSameMonth, isSameDay, format } from "date-fns";
 import { cn } from "@/lib/utils";
-import { CalendarEvent } from "@/interface/subscription";
+import { CalendarEvent } from "@/interfaces/Subscription";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import EventItem from "./eventItem";
 import { Skeleton } from "@/components/ui/skeleton";
-import { CalendarDayProps } from "@/interface/calendar";
+import { CalendarDayProps } from "@/interfaces/Calendar";
 
 const CalendarDay = ({
   day,
