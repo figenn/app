@@ -3,7 +3,7 @@
 import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/auth';
 import { cookies } from 'next/headers';
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 async function handleFetchResponse(response: Response) {
     try {
@@ -26,7 +26,7 @@ export async function login(data: LoginFormData) {
         formData.append('email', data.email);
         formData.append('password', data.password);
         
-        const response = await fetch(`${BACKEND_URL}/auth/login`, {
+        const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             body: formData,
         });
@@ -55,7 +55,7 @@ export async function registerUser(data: RegisterFormData) {
         formData.append('last_name', data.last_name);
         formData.append('country', data.country);
         
-        const response = await fetch(`${BACKEND_URL}/auth/register`, {
+        const response = await fetch(`${API_URL}/auth/register`, {
             method: 'POST',
             body: formData,
         });
@@ -73,7 +73,7 @@ export async function forgotPassword(data: ForgotPasswordFormData) {
         const formData = new FormData();
         formData.append('email', data.email);
 
-        const response = await fetch(`${BACKEND_URL}/auth/request-reset-password`, {
+        const response = await fetch(`${API_URL}/auth/request-reset-password`, {
             method: 'POST',
             body: formData,
         });
@@ -116,7 +116,7 @@ export async function auth() {
             return null;
         }
 
-        const response = await fetch(`${BACKEND_URL}/user/me`, {
+        const response = await fetch(`${API_URL}/user/me`, {
             method: 'GET',
             headers: { 'Authorization': `Bearer ${token}` },
         });
@@ -152,16 +152,11 @@ export async function BearerToken() {
 
 export async function resetPassword(data: ResetPasswordFormData, token: string) {
     try {
-        const requestBody = {
-            ...data,
-            token,
-        };
-
         const formData = new FormData();
         formData.append('password', data.password);
         formData.append('token', token);
 
-        const response = await fetch(`${BACKEND_URL}/auth/reset-password`, {
+        const response = await fetch(`${API_URL}/auth/reset-password`, {
             method: 'POST',
             body: JSON.stringify(formData),
         });

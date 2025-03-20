@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CalendarIcon, Loader2, Plus } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
@@ -44,23 +44,30 @@ import {
 } from "@/schemas/subscription";
 import SearchService from "./search-service";
 import { toast } from "sonner";
-import ColorPicker from "./colorPicker";
-import BillingCycleSelect from "./billingCycle";
 import { format } from "date-fns";
 import { useDateLocale } from "@/hooks/useDateLocale";
 import { CategoriePicker } from "@/utils/categorieUtils";
 import { useTranslations } from "next-intl";
 import { useCurrencyLocale } from "@/hooks/useCurrencyLocale";
+import BillingCycleSelect from "./billingCycle";
+import ColorPicker from "./colorPicker";
+import { useModalStore } from "@/store/modelStore";
 
-const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
-export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
-  const [isOpen, setIsOpen] = useState(false);
+export function SubscriptionModal({
+  bearer,
+  currentMonth,
+}: {
+  bearer: string | undefined;
+  currentMonth: Date;
+}) {
   const [selectedLogo, setSelectedLogo] = useState<string | null>(null);
   const dateLocale = useDateLocale();
   const currency = useCurrencyLocale(navigator.language);
   const t = useTranslations("subscription.form");
-  console.log(navigator.language);
+  const queryClient = useQueryClient();
+  const { isOpen, closeModal, openModal } = useModalStore();
 
   const form = useForm<SubscriptionFormValues>({
     resolver: zodResolver(formSubscriptionSchema),
@@ -93,9 +100,12 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
     },
     onSuccess: () => {
       toast.success("Abonnement créé avec succès !");
-      setIsOpen(false);
+      closeModal();
       form.reset();
       setSelectedLogo(null);
+      queryClient.invalidateQueries({
+        queryKey: ["subscriptions", currentMonth.toISOString()],
+      });
     },
     onError: () => {
       toast.error("Erreur lors de la création de l'abonnement");
@@ -118,13 +128,13 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
   return (
     <>
       <Button
-        onClick={() => setIsOpen(true)}
+        onClick={openModal}
         className="flex items-center gap-2 cursor-pointer"
       >
         <Plus className="h-4 w-4" />
       </Button>
 
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={isOpen} onOpenChange={closeModal}>
         <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden">
           <DialogHeader className="px-6 pt-6 pb-2">
             <div className="flex items-center justify-between">

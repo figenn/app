@@ -3,7 +3,8 @@
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
+import { ControllerRenderProps, useForm } from "react-hook-form";
+import { BrandGoogle } from "@mynaui/icons-react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,13 +15,13 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Icons } from "./icons";
 import { Separator } from "./ui/separator";
 import { LoginFormData, loginSchema } from "@/schemas/auth";
 import { login } from "@/actions/auth";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
 import { ForgotPasswordForm } from "./forgot-password";
+import Loader from "./ui/loader";
 
 export default function LoginForm() {
   const router = useRouter();
@@ -51,7 +52,11 @@ export default function LoginForm() {
     });
   };
 
-  const formControlProps = (field: any, placeholder: string, type: string) => ({
+  const formControlProps = (
+    field: ControllerRenderProps<LoginFormData, keyof LoginFormData>,
+    placeholder: string,
+    type: string
+  ) => ({
     ...field,
     placeholder,
     type,
@@ -110,9 +115,7 @@ export default function LoginForm() {
             )}
           />
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
+            {isPending && <Loader />}
             {t("submit")}
           </Button>
         </form>
@@ -128,7 +131,7 @@ export default function LoginForm() {
         </div>
       </div>
       <Button variant="outline" type="button" className="w-full">
-        <Icons.google className="mr-2 h-4 w-4" />
+        <BrandGoogle />
         {t("google")}
       </Button>
     </div>

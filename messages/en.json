@@ -59,10 +59,10 @@
     "started": "Started",
     "billingOn": "Billing on"
   },
-  "calendar": {
-    "title": "Subscription calendar"
-  },
   "subscription": {
+    "calendar": {
+      "title": "Subscription calendar"
+    },
     "form": {
       "new_subscription": "New Subscription",
       "second_title" : "Add a new subscription to your list",
@@ -87,7 +87,8 @@
       "select_price": "Enter Price",
       "placeholder_description": "Describe your subscription...",
       "service_placeholder": "Enter service name",
-      "no_results": "No service found. Try another search name."
+      "no_results": "No service found. Try another search name.",
+      "chooseColor": "Choose color"
     }
   }
 }

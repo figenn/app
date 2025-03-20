@@ -8,12 +8,10 @@ import { useTranslations } from "next-intl";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Eye, EyeOff, Lock } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -22,10 +20,9 @@ import {
 import { Input } from "@/components/ui/input";
 import { CountryDropdown } from "./ui/country-dropdown";
 import { StartConfetti } from "@/lib/confetti";
-import { cn } from "@/lib/utils";
 import { RegisterFormData, registerSchema } from "@/schemas/auth";
 import { registerUser } from "@/actions/auth";
-import { Icons } from "./icons";
+import Loader from "./ui/loader";
 
 export function RegisterForm() {
   const t = useTranslations("Register");
@@ -64,7 +61,7 @@ export function RegisterForm() {
         setTimeout(() => {
           router.push("/auth/login");
         }, 2000);
-      } catch (error) {
+      } catch {
         setServerError(t("error.unexpected"));
       }
     });
@@ -230,9 +227,7 @@ export function RegisterForm() {
             )}
           />
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending && (
-              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-            )}
+            {isPending && <Loader />}
             {t("register")}
           </Button>
         </form>

@@ -1,18 +1,16 @@
-import { Send } from "lucide-react"
+import { Send } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -23,34 +21,34 @@ import { ForgotPasswordFormData, forgotPasswordSchema } from "@/schemas/auth";
 import { forgotPassword } from "@/actions/auth";
 
 export function ForgotPasswordForm() {
-    const router = useRouter();
-    const [isPending, startTransition] = useTransition();
-    const {
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+  const {
     register,
     handleSubmit,
     setError,
     formState: { errors },
-    } = useForm<ForgotPasswordFormData>({
+  } = useForm<ForgotPasswordFormData>({
     resolver: zodResolver(forgotPasswordSchema),
-    });
+  });
 
-    const onSubmit = (data: ForgotPasswordFormData) => {
+  const onSubmit = (data: ForgotPasswordFormData) => {
     startTransition(async () => {
-        const response = await forgotPassword(data);
+      const response = await forgotPassword(data);
 
-        if (!response.success) {
+      if (!response.success) {
         setError("root.serverError", {
-            type: "server",
-            message: response.message,
+          type: "server",
+          message: response.message,
         });
         return;
-        }
+      }
 
-        setTimeout(() => {
+      setTimeout(() => {
         router.push("/auth/login");
-        }, 2000);
+      }, 2000);
     });
-    };
+  };
 
   return (
     <Dialog>
@@ -67,29 +65,34 @@ export function ForgotPasswordForm() {
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2">
             <div className="grid flex-1 gap-2">
-                <Label htmlFor="email" className="sr-only">
+              <Label htmlFor="email" className="sr-only">
                 Email
-                </Label>
-                <Input
+              </Label>
+              <Input
                 id="email"
                 {...register("email")}
                 className={`${errors.email ? "border-red-500" : ""}`}
                 required
-                />
+              />
             </div>
             {isPending ? (
-                <p>Loading</p>
-                ) : (
-            <Button type="submit" size="sm" className="px-3" disabled={isPending}>
+              <p>Loading</p>
+            ) : (
+              <Button
+                type="submit"
+                size="sm"
+                className="px-3"
+                disabled={isPending}
+              >
                 <span className="sr-only">Send</span>
                 <Send />
-            </Button>
+              </Button>
             )}
-            </div>
+          </div>
         </form>
       </DialogContent>
     </Dialog>
-  )
+  );
 }
