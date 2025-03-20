@@ -16,8 +16,9 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { User } from "@/interface/user";
+
 import { useTranslations } from "next-intl";
+import { User } from "@/interfaces/User";
 
 export function NavUser({ user }: { user: User }) {
   const { isMobile } = useSidebar();

@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Pi, WalletCards } from "lucide-react";
+import { Calendar, CalendarCheck, Pi, WalletCards } from "lucide-react";
 
 import { NavMain } from "@/components/sidebar/nav-main";
 import { NavUser } from "@/components/sidebar/nav-user";
@@ -13,7 +13,7 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { User } from "@/interface/user";
+import { User } from "@/interfaces/User";
 
 const data = {
   team: {
@@ -26,7 +26,7 @@ const data = {
     {
       title: "Abonnements",
       url: "#",
-      icon: WalletCards,
+      icon: Calendar,
       isActive: true,
     },
   ],

@@ -1,4 +1,4 @@
-import LoginForm from "@/components/login-form";
+import LoginForm from "@/components/auth/login-form";
 import ModeToggle from "@/components/ui/toggle-theme";
 import { GalleryVerticalEnd } from "lucide-react";
 

@@ -1,8 +1,8 @@
 import { Separator } from "@/components/ui/separator";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { User } from "@/interface/user";
 import { getTranslations } from "next-intl/server";
 import ModeToggle from "./ui/toggle-theme";
+import { User } from "@/interfaces/User";
 
 export async function SiteHeader({ user }: { user: User }) {
   const t = await getTranslations("common");
