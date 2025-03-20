@@ -95,7 +95,7 @@ export default function SearchService({ onSelect }: SearchServiceProps) {
         {isResultsOpen && (
           <div
             ref={resultsRef}
-            className="absolute z-10 mt-1 w-full rounded-md border bg-white shadow-lg"
+            className="absolute z-10 mt-1 w-full rounded-md border bg-background shadow-lg"
           >
             {results.map(({ name, logo_url }) => (
               <div

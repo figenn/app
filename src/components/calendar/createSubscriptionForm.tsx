@@ -67,7 +67,7 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
     defaultValues: {
       name: "",
       category: "",
-      color: "#6366f1",
+      color: "#f9a5a5",
       description: "",
       price: 0,
       billing_cycle: "monthly",
@@ -103,6 +103,9 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
   });
 
   function onSubmit(values: SubscriptionFormValues) {
+    const startDate = new Date(form.getValues("start_date"));
+    const startDateUTC = startDate.toISOString();
+    form.setValue("start_date", startDateUTC);
     mutation.mutate(values);
   }
 
@@ -129,9 +132,7 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
                 {t("new_subscription")}
               </DialogTitle>
             </div>
-            <DialogDescription className="text-muted-foreground">
-              {t("second_title")}
-            </DialogDescription>
+            <DialogDescription>{t("second_title")}</DialogDescription>
           </DialogHeader>
 
           <Form {...form}>
@@ -145,7 +146,7 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
               <div className="px-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex items-start gap-4 md:col-span-2">
                   {selectedLogo && (
-                    <div className="h-12 w-12 mt-2 rounded-md overflow-hidden border flex-shrink-0 bg-white flex items-center justify-center">
+                    <div className="h-12 w-12 mt-2 rounded-md overflow-hidden border flex-shrink-0 bg-card flex items-center justify-center">
                       <img
                         src={selectedLogo || "/placeholder.svg"}
                         alt="Logo"
@@ -243,7 +244,7 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
                               className="w-full pl-3 text-left font-normal"
                             >
                               {field.value ? (
-                                format(field.value, "PPP", {
+                                format(new Date(field.value), "PPP", {
                                   locale: dateLocale,
                                 })
                               ) : (
@@ -258,8 +259,19 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
                         <PopoverContent className="w-auto p-0" align="start">
                           <Calendar
                             mode="single"
-                            selected={field.value}
-                            onSelect={field.onChange}
+                            selected={
+                              field.value ? new Date(field.value) : undefined
+                            }
+                            onSelect={(date) => {
+                              if (date) {
+                                const localDate = new Date(
+                                  date.getTime() -
+                                    date.getTimezoneOffset() * 60000
+                                );
+                                field.onChange(localDate.toISOString());
+                                console.log(localDate);
+                              }
+                            }}
                             initialFocus
                             locale={dateLocale}
                           />
@@ -298,7 +310,7 @@ export function SubscriptionModal({ bearer }: { bearer: string | undefined }) {
                 <BillingCycleSelect form={form} />
               </div>
 
-              <div className="bg-muted/40 px-6 py-4 flex items-center justify-end">
+              <div className="bg-muted/40 px-6 py-4 flex items-center justify-end border-t">
                 <Button type="submit" disabled={mutation.isPending}>
                   {mutation.isPending ? (
                     <>

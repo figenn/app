@@ -73,7 +73,7 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
         <div className="p-4">
           <div className="flex justify-between">
             <div className="flex items-center">
-              <Avatar className="h-10 w-10 ring-2 transition-all duration-200">
+              <Avatar>
                 <AvatarImage
                   className="bg-white p-1 rounded-md"
                   src={subscription.logo_url || ""}
@@ -104,19 +104,6 @@ const SubscriptionCard: React.FC<SubscriptionCardProps> = ({
               </p>
             </div>
           )}
-
-          <div className="mt-3 pt-3 border-t border-border">
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span className="flex items-center">
-                <span className="inline-block w-2 h-2 rounded-full mr-1.5 bg-green-500"></span>
-                {t("started")} {formattedDate}
-              </span>
-              <span>
-                {t("billingOn")}{" "}
-                {formatMonthDay(locale, subscription.start_date)}
-              </span>
-            </div>
-          </div>
         </div>
       </HoverCardContent>
     </HoverCard>
