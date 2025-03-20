@@ -5,9 +5,10 @@ import { Subscription } from "@/interface/subscription";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { SubscriptionModal } from "@/components/calendar/subscriptionForm";
-import { Dialog } from "@/components/ui/dialog";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
+
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default function CalendarWidget({
   bearer,
@@ -21,7 +22,7 @@ export default function CalendarWidget({
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
     const response = await fetch(
-      `http://localhost:8080/api/subscriptions/active?year=${year}&month=${month}`,
+      `${API_URL}/subscriptions/active?year=${year}&month=${month}`,
       {
         headers: {
           Authorization: `Bearer ${bearer}`,
@@ -52,9 +53,7 @@ export default function CalendarWidget({
             <CardTitle className="text-2xl font-semibold">
               {t("title")}
             </CardTitle>
-            <Dialog>
-              <SubscriptionModal bearer={bearer} currentMonth={currentMonth} />
-            </Dialog>
+            <SubscriptionModal bearer={bearer} currentMonth={currentMonth} />
           </div>
         </CardHeader>
         <CardContent className="space-y-4">

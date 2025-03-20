@@ -1,6 +1,6 @@
 import ResetPasswordForm from "./form";
 
-const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export default async function ResetPasswordPage({
   params,
@@ -10,7 +10,7 @@ export default async function ResetPasswordPage({
   const token = (await params).token;
 
   const response = await fetch(
-    `${BACKEND_URL}/auth/verify-reset-password-token?token=${token}`
+    `${API_URL}/auth/verify-reset-password-token?token=${token}`
   );
 
   const data = await response.json();
