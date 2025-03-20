@@ -1,6 +1,6 @@
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { EventDetailsPopover } from "./eventDetailsPopover";
-import { EventItemProps } from "@/interface/calendar";
+import { EventItemProps } from "@/interfaces/Calendar";
 
 const EventItem = ({ event }: EventItemProps) => {
   const isMobile = useIsMobile();

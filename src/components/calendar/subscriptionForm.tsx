@@ -38,10 +38,6 @@ import {
 } from "@/components/ui/select";
 import { Separator } from "@/components/ui/separator";
 
-import {
-  formSubscriptionSchema,
-  type SubscriptionFormValues,
-} from "@/schemas/subscription";
 import SearchService from "./search-service";
 import { toast } from "sonner";
 import { format } from "date-fns";
@@ -51,7 +47,11 @@ import { useTranslations } from "next-intl";
 import { useCurrencyLocale } from "@/hooks/useCurrencyLocale";
 import BillingCycleSelect from "./billingCycle";
 import ColorPicker from "./colorPicker";
-import { useModalStore } from "@/store/modelStore";
+import { useModalStore } from "@/store/ModalStore";
+import {
+  formSubscriptionSchema,
+  SubscriptionFormValues,
+} from "@/schemas/Subscription";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 

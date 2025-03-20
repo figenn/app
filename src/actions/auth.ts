@@ -1,6 +1,6 @@
 'use server';
 
-import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/auth';
+import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/Auth';
 import { cookies } from 'next/headers';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
@@ -109,30 +109,30 @@ export async function logout() {
 
 export async function auth() {
     try {
-        const cookieStore = cookies();
-        const token = (await cookieStore).get('token')?.value;
-
-        if (!token) {
-            return null;
-        }
-
-        const response = await fetch(`${API_URL}/user/me`, {
-            method: 'GET',
-            headers: { 'Authorization': `Bearer ${token}` },
-        });
-        
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.message || 'Une erreur est survenue.');
-        }
-
-        return data.user;
-    } catch (error) {
-        console.error('Authentication failed:', error);
+      const cookieStore = cookies();
+      const token = (await cookieStore).get('token')?.value;
+  
+      if (!token) {
         return null;
+      }
+  
+      const response = await fetch(`${API_URL}/user/me`, {
+        method: 'GET',
+        headers: { Authorization: `Bearer ${token}` },
+      });
+  
+      if (!response.ok) {
+        return null;
+      }
+  
+      const data = await response.json();
+  
+      return data.user;
+    } catch (error) {
+      console.error('Authentication failed:', error);
+      return null;
     }
-}
+  }
 
 export async function BearerToken() {
     try {

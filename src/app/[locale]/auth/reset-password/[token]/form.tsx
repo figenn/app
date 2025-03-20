@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTransition } from "react";
-import { ResetPasswordFormData, resetPasswordSchema } from "@/schemas/auth";
+import { ResetPasswordFormData, resetPasswordSchema } from "@/schemas/Auth";
 import { resetPassword } from "@/actions/auth";
 
 export default function ResetPasswordForm({ token }: { token: string }) {

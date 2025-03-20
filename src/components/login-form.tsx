@@ -4,7 +4,6 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ControllerRenderProps, useForm } from "react-hook-form";
-import { BrandGoogle } from "@mynaui/icons-react";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -16,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Separator } from "./ui/separator";
-import { LoginFormData, loginSchema } from "@/schemas/auth";
+import { LoginFormData, loginSchema } from "@/schemas/Auth";
 import { login } from "@/actions/auth";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
@@ -131,7 +130,6 @@ export default function LoginForm() {
         </div>
       </div>
       <Button variant="outline" type="button" className="w-full">
-        <BrandGoogle />
         {t("google")}
       </Button>
     </div>
