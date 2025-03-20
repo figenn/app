@@ -13,9 +13,15 @@ import {
   SidebarHeader,
   SidebarRail,
 } from "@/components/ui/sidebar";
+<<<<<<< HEAD
 import { User } from "@/interface/user";
 
 const data = {
+=======
+
+// This is sample data.
+const defaultData = {
+>>>>>>> 00c448f (update)
   team: {
     name: "Figenn",
     logo: Pi,
@@ -40,14 +46,18 @@ export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
-        <TeamSwitcher team={data.team} />
+        <TeamSwitcher team={defaultData.team} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
+        <NavMain items={defaultData.navMain} />
       </SidebarContent>
+<<<<<<< HEAD
       <SidebarFooter>
         <NavUser user={user} />
       </SidebarFooter>
+=======
+      <SidebarFooter>{user ? <NavUser user={user} /> : null}</SidebarFooter>
+>>>>>>> 00c448f (update)
       <SidebarRail />
     </Sidebar>
   );
