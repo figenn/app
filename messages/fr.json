@@ -93,7 +93,7 @@
         "placeholder_description": "Décrivez votre abonnement...",
         "service_placeholder": "Enter service name",
         "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
-        "chooseColor": "Choisissez une couleur",
+        "chooseColor": "Couleur",
         "categories": {
           "streaming": "Streaming",
           "music": "Musique",

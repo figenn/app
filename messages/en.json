@@ -91,7 +91,7 @@
       "placeholder_description": "Describe your subscription...",
       "service_placeholder": "Enter service name",
       "no_results": "No service found. Try another search name.",
-      "chooseColor": "Choose color",
+      "chooseColor": "Color",
       "categories": {
         "streaming": "Streaming",
         "music": "Music",
