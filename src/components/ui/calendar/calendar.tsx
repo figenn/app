@@ -33,6 +33,11 @@ const Calendar = ({
   const { cellSize } = getSizeStyles(size);
 
   useEffect(() => {
+    if (!subscriptions || !Array.isArray(subscriptions)) {
+      setEvents([]);
+      return;
+    }
+
     const monthEvents = subscriptions.flatMap((subscription) =>
       getSubscriptionOccurrencesInMonth(subscription, currentMonth)
     );

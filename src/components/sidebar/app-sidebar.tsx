@@ -25,7 +25,7 @@ const data = {
   navMain: [
     {
       title: "Abonnements",
-      url: "#",
+      url: "/subscriptions",
       icon: Calendar,
       isActive: true,
     },
