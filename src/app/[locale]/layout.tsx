@@ -10,7 +10,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
-  title: "Figenn Dashboard",
+  title: "Figenn",
   description: "Figenn is a finance tracking app",
 };
 
