@@ -91,7 +91,29 @@
       "placeholder_description": "Describe your subscription...",
       "service_placeholder": "Enter service name",
       "no_results": "No service found. Try another search name.",
-      "chooseColor": "Choose color"
+      "chooseColor": "Choose color",
+      "categories": {
+        "streaming": "Streaming",
+        "music": "Music",
+        "software": "Software",
+        "gaming": "Gaming",
+        "cloud": "Cloud",
+        "communication": "Communication",
+        "finance": "Finance",
+        "shopping": "Shopping",
+        "transport": "Transport",
+        "health": "Health",
+        "education": "Education",
+        "other": "Other"
+      }
+    },
+    "gauge": {
+      "monthly_cost": "Average Monthly Cost",
+      "per_month": "per month",
+      "annual_cost": "Average Annual Cost",
+      "economic": "Economic",
+      "moderate": "Moderate",
+      "high": "High"
     }
   },
   "sidebar": {

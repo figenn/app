@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Spinner from "../ui/loader";
 import { useIsMobile } from "@/hooks/useIsMobile";
 import { useCurrencyLocale } from "@/hooks/useCurrencyLocale";
+import { useTranslations } from "next-intl";
 
 interface SubscriptionGaugeProps {
   data: number;
@@ -22,6 +23,7 @@ export default function SubscriptionGauge({
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
   const isMobile = useIsMobile();
   const currency = useCurrencyLocale(navigator.language);
+  const t = useTranslations("subscription.gauge");
 
   useEffect(() => {
     if (!isLoading && !error && annualCost) {
@@ -58,7 +60,7 @@ export default function SubscriptionGauge({
       <CardHeader>
         <CardTitle className="flex items-center gap-2 pt-1 text-base">
           <CircleDollarSign className="h-4 w-4" />
-          Coût mensuel
+          {t("monthly_cost")}
         </CardTitle>
       </CardHeader>
       <CardContent className="px-4 pb-4 pt-0">
@@ -105,10 +107,12 @@ export default function SubscriptionGauge({
                     isMobile ? "text-2xl" : "text-xl"
                   } font-bold ${getColorClass()}`}
                 >
-                  {annualCost}
+                  {monthlyCost.toFixed(2)}
                   {currency}
                 </p>
-                <p className="text-xs text-muted-foreground">par mois</p>
+                <p className="text-xs text-muted-foreground">
+                  {t("per_month")}
+                </p>
               </div>
             </div>
 
@@ -116,7 +120,7 @@ export default function SubscriptionGauge({
               <div className="mt-4 w-full">
                 <div className="flex justify-between mb-2">
                   <span className="text-sm text-muted-foreground">
-                    Coût annuel
+                    {t("annual_cost")}
                   </span>
                   <span className="font-medium">
                     {annualCost}
@@ -135,9 +139,9 @@ export default function SubscriptionGauge({
                   />
                 </div>
                 <div className="flex justify-between mt-2 text-xs">
-                  <span className="text-green-500">Économique</span>
-                  <span className="text-orange-500">Modéré</span>
-                  <span className="text-red-500">Élevé</span>
+                  <span className="text-green-500">{t("economic")}</span>
+                  <span className="text-orange-500">{t("moderate")}</span>
+                  <span className="text-red-500">{t("high")}</span>
                 </div>
               </div>
             )}

@@ -223,7 +223,7 @@ export function SubscriptionModal({
                                   >
                                     <div className="flex items-center gap-2">
                                       <span>{category.icon}</span>
-                                      <span>{category.label}</span>
+                                      <span>{t(category.label)}</span>
                                     </div>
                                   </SelectItem>
                                 ))}
