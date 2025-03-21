@@ -6,9 +6,13 @@ export default async function Page() {
   const token = (await cookies()).get("token")?.value;
 
   return (
-    <div>
-      <WidgetRow bearer={token} />
-      <div className="w-[80vw]">
+    <div className="mt-10 flex flex-col gap-10">
+      <div className="flex items-center justify-between gap-6 mx-10">
+        <WidgetRow bearer={token} />
+        <WidgetRow bearer={token} />
+        <WidgetRow bearer={token} />
+      </div>
+      <div className="w-[95%] mx-10">
         <CalendarWidget bearer={token} />
       </div>
     </div>

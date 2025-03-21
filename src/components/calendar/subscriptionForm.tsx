@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { CalendarIcon, Loader2, Plus } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Import useEffect
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -52,6 +52,7 @@ import {
   formSubscriptionSchema,
   SubscriptionFormValues,
 } from "@/schemas/Subscription";
+import { parseAsString, useQueryState } from "nuqs";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -68,6 +69,13 @@ export function SubscriptionModal({
   const t = useTranslations("subscription.form");
   const queryClient = useQueryClient();
   const { isOpen, closeModal, openModal } = useModalStore();
+  const [open, setOpen] = useQueryState("modal", parseAsString);
+
+  useEffect(() => {
+    if (open === "true") {
+      openModal();
+    }
+  }, [open, openModal]);
 
   const form = useForm<SubscriptionFormValues>({
     resolver: zodResolver(formSubscriptionSchema),
@@ -128,13 +136,22 @@ export function SubscriptionModal({
   return (
     <>
       <Button
-        onClick={openModal}
+        onClick={() => {
+          setOpen("true");
+          openModal();
+        }}
         className="flex items-center gap-2 cursor-pointer"
       >
         <Plus className="h-4 w-4" />
       </Button>
 
-      <Dialog open={isOpen} onOpenChange={closeModal}>
+      <Dialog
+        open={open === "true" && isOpen}
+        onOpenChange={() => {
+          setOpen("false");
+          closeModal();
+        }}
+      >
         <DialogContent className="sm:max-w-[750px] p-0 overflow-hidden">
           <DialogHeader className="px-6 pt-6 pb-2">
             <div className="flex items-center justify-between">

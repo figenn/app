@@ -28,7 +28,7 @@ export default function WidgetRow({ bearer }: { bearer: string | undefined }) {
   });
 
   return (
-    <div className="p-6 max-w-md mx-auto">
+    <div className="w-1/3">
       <SubscriptionGauge
         data={data ?? 0}
         isLoading={isLoading}

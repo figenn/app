@@ -12,8 +12,8 @@ const ModeToggle = () => {
       className="flex h-8 w-8 cursor-pointer items-center justify-center duration-300 text-slate-950 dark:text-white"
     >
       <span>
-        <SunIcon className="hidden h-[22px] w-[22px] fill-current dark:block" />
-        <MoonIcon className="h-[22px] w-[22px] fill-current dark:hidden" />
+        <SunIcon className="hidden h-[26px] w-[26px] fill-current dark:block" />
+        <MoonIcon className="h-[26px] w-[26px] fill-current dark:hidden" />
       </span>
     </button>
   );

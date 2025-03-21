@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { Calendar, CalendarCheck, Pi, WalletCards } from "lucide-react";
+import { Calendar, Home, Pi } from "lucide-react";
 
 import { NavMain } from "@/components/sidebar/nav-main";
 import { NavUser } from "@/components/sidebar/nav-user";
@@ -23,6 +23,12 @@ const data = {
     plan: "Premium Plan",
   },
   navMain: [
+    {
+      title: "Tableau de bord",
+      url: "/dashboard",
+      icon: Home,
+      isActive: false,
+    },
     {
       title: "Abonnements",
       url: "/subscriptions",

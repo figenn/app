@@ -1,13 +1,11 @@
 "use client";
 
-import { CardDescription } from "@/components/ui/card";
-
 import { CircleDollarSign } from "lucide-react";
 import { useEffect, useState } from "react";
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Spinner from "../ui/loader";
 import { useIsMobile } from "@/hooks/useIsMobile";
+import { useCurrencyLocale } from "@/hooks/useCurrencyLocale";
 
 interface SubscriptionGaugeProps {
   data: number;
@@ -23,18 +21,7 @@ export default function SubscriptionGauge({
   const monthlyCost = annualCost ? annualCost / 12 : 0;
   const [animatedPercentage, setAnimatedPercentage] = useState(0);
   const isMobile = useIsMobile();
-
-  // Format currency based on locale
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat(navigator.language || "fr-FR", {
-      style: "currency",
-      currency: "EUR",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    })
-      .format(amount)
-      .replace(/\s/g, "");
-  };
+  const currency = useCurrencyLocale(navigator.language);
 
   useEffect(() => {
     if (!isLoading && !error && annualCost) {
@@ -43,7 +30,6 @@ export default function SubscriptionGauge({
 
       const animateCircle = () => {
         setAnimatedPercentage(0);
-        document.body.offsetHeight;
         setTimeout(() => {
           requestAnimationFrame(() => {
             setAnimatedPercentage(targetPercentage);
@@ -91,10 +77,7 @@ export default function SubscriptionGauge({
                 isMobile ? "h-32 w-32" : "h-36 w-36"
               }`}
             >
-              {/* Circular background */}
               <div className="absolute inset-0 rounded-full border-8 border-muted"></div>
-
-              {/* Circular progress with animation */}
               <svg
                 className="absolute inset-0 h-full w-full"
                 viewBox="0 0 100 100"
@@ -116,14 +99,14 @@ export default function SubscriptionGauge({
                 />
               </svg>
 
-              {/* Cost display */}
               <div className="text-center z-10">
                 <p
                   className={`${
                     isMobile ? "text-2xl" : "text-xl"
                   } font-bold ${getColorClass()}`}
                 >
-                  {formatCurrency(monthlyCost)}
+                  {annualCost}
+                  {currency}
                 </p>
                 <p className="text-xs text-muted-foreground">par mois</p>
               </div>
@@ -136,7 +119,8 @@ export default function SubscriptionGauge({
                     Coût annuel
                   </span>
                   <span className="font-medium">
-                    {formatCurrency(annualCost)}
+                    {annualCost}
+                    {currency}
                   </span>
                 </div>
                 <div className="h-2 w-full bg-white/20 rounded-full overflow-hidden">

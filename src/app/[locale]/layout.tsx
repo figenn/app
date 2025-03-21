@@ -7,6 +7,7 @@ import QueryProvider from "@/providers/QueryProvider";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 export const metadata: Metadata = {
   title: "Figenn Dashboard",
@@ -31,10 +32,12 @@ export default async function RootLayout({
         <Toaster richColors position="top-right" />
         <ThemeProvider>
           <NextIntlClientProvider>
-            <QueryProvider>
-              {children}
-              <ReactQueryDevtools initialIsOpen={true} />
-            </QueryProvider>
+            <NuqsAdapter>
+              <QueryProvider>
+                {children}
+                <ReactQueryDevtools initialIsOpen={true} />
+              </QueryProvider>
+            </NuqsAdapter>
           </NextIntlClientProvider>
         </ThemeProvider>
       </body>

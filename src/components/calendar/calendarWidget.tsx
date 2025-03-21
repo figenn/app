@@ -46,26 +46,22 @@ export default function CalendarWidget({
   });
 
   return (
-    <div className="flex flex-col items-center justify-center">
-      <Card className="w-[90%]">
-        <CardHeader>
-          <div className="flex justify-between items-center">
-            <CardTitle className="text-2xl font-semibold">
-              {t("title")}
-            </CardTitle>
-            <SubscriptionModal bearer={bearer} currentMonth={currentMonth} />
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <Calendar
-            subscriptions={sampleSubscriptions || []}
-            currentMonth={currentMonth}
-            setCurrentMonth={setCurrentMonth}
-            isLoading={isLoading}
-            size={"small"}
-          />
-        </CardContent>
-      </Card>
-    </div>
+    <Card className="w-[100%]">
+      <CardHeader>
+        <div className="flex justify-between items-center">
+          <CardTitle className="text-2xl font-semibold">{t("title")}</CardTitle>
+          <SubscriptionModal bearer={bearer} currentMonth={currentMonth} />
+        </div>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <Calendar
+          subscriptions={sampleSubscriptions || []}
+          currentMonth={currentMonth}
+          setCurrentMonth={setCurrentMonth}
+          isLoading={isLoading}
+          size={"small"}
+        />
+      </CardContent>
+    </Card>
   );
 }
