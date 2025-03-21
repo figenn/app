@@ -1,11 +1,11 @@
-import { GalleryVerticalEnd } from "lucide-react";
-import { RegisterForm } from "@/components/auth/register-form";
+import { AuthForm } from "@/components/form/form-auth";
 import { IconDarkMode } from "@/components/ui/iconButtons";
+import { GalleryVerticalEnd } from "lucide-react";
 
 export default function LoginPage() {
   return (
-    <div className="flex flex-col gap-4 p-6 md:p-10">
-      <div className="flex justify-between items-center">
+    <section className="flex flex-col min-h-screen">
+      <div className="flex flex-col gap-4 p-6 md:p-10">
         <IconDarkMode />
         <div className="flex justify-center gap-2 md:justify-end">
           <div className="bg-primary text-primary-foreground flex items-center justify-center rounded-md size-6">
@@ -14,11 +14,9 @@ export default function LoginPage() {
           Figenn.
         </div>
       </div>
-      <div className="flex mt-10 items-center justify-center">
-        <div className="w-full min-w-[20rem] max-w-[23rem]">
-          <RegisterForm />
-        </div>
+      <div className="flex flex-1 items-center justify-center -mt-24">
+        <AuthForm formType="register" />
       </div>
-    </div>
+    </section>
   );
 }

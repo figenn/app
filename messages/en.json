@@ -1,46 +1,35 @@
 {
-  "LocaleSwitcher": {
+  "common": {
+    "hello": "Hello"
+  },
+  "localeSwitcher": {
     "label": "Change language",
     "locale": "{locale, select, fr {🇫🇷 French} en {🇺🇸 English} other {Unknown}}"
   },
-  "common": {
-      "hello": "Hello"
-  },
-    "errors": {
-    "emailInvalid": "The email address is not valid.",
-    "passwordMinLength": "The password must be at least 8 characters long.",
-    "firstNameRequired": "First name is required.",
-    "firstNameMaxLength": "First name must not exceed 32 characters.",
-    "lastNameRequired": "Last name is required.",
-    "lastNameMaxLength": "Last name must not exceed 32 characters.",
-    "emailRequired": "Email address is required.",
-    "emailValid": "Email address must be valid.",
-    "emailNoPlus": "Email address must not contain '+'.",
-    "countryRequired": "Country is required.",
-    "countryMaxLength": "Country must not exceed 32 characters.",
-    "passwordRequired": "Password is required.",
-    "passwordMaxLength": "Password must not exceed 32 characters.",
-    "passwordRegex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
-    "confirmPasswordRequired": "Password confirmation is required.",
-    "confirmPasswordMatch": "Passwords do not match."
-  },
   "login": {
-    "title": "Login to your account",
-    "description": "Enter your email below to login to your account",
+    "title": "Log in to your account",
+    "description": "Enter your email below to log in to your account",
     "email": "Email",
+    "emailPlaceholder": "Enter your email",
     "password": "Password",
-    "forgotPassword": "Forgot your password?",
-    "submit": "Login",
+    "passwordPlaceholder": "Enter your password",
+    "forgotPassword": "Forgot password?",
+    "submit": "Log in",
     "orContinueWith": "Or continue with",
     "google": "Google",
-    "success": "Login successful"
+    "success": "Login successful",
+    "errors": {
+      "emailInvalid": "Email address is invalid.",
+      "passwordMinLength": "Password must be at least 8 characters."
+    }
   },
-  "Register": {
+  "register": {
     "title": "Create an account",
-    "subtitle": "Join us in just a few seconds.",
-    "firstName": "First Name",
+    "description": "Join us in a few seconds.",
+    "subtitle": "Join us in a few seconds.",
+    "firstName": "First name",
     "firstNamePlaceholder": "Enter your first name",
-    "lastName": "Last Name",
+    "lastName": "Last name",
     "lastNamePlaceholder": "Enter your last name",
     "email": "Email",
     "emailPlaceholder": "Enter your email",
@@ -48,16 +37,30 @@
     "countryPlaceholder": "Select your country",
     "password": "Password",
     "passwordPlaceholder": "Enter your password",
-    "passwordConfirm": "Confirm Password",
+    "passwordConfirm": "Confirm password",
     "passwordConfirmPlaceholder": "Confirm your password",
-    "register": "Sign up",
-    "registering": "Signing up...",
-    "error": {
-      "unknown": "An unknown error occurred.",
-      "unexpected": "An unexpected error occurred."
+    "register": "Register",
+    "registering": "Registering...",
+    "submit": "Register",
+    "errors": {
+      "firstNameRequired": "First name is required.",
+      "firstNameMaxLength": "First name must not exceed 32 characters.",
+      "lastNameRequired": "Last name is required.",
+      "lastNameMaxLength": "Last name must not exceed 32 characters.",
+      "emailRequired": "Email address is required.",
+      "emailValid": "Email address must be valid.",
+      "emailNoPlus": "Email address must not contain '+'.",
+      "countryRequired": "Country is required.",
+      "countryMaxLength": "Country must not exceed 32 characters.",
+      "passwordRequired": "Password is required.",
+      "passwordMinLength": "Password must be at least 8 characters.",
+      "passwordMaxLength": "Password must not exceed 32 characters.",
+      "passwordRegex": "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.",
+      "confirmPasswordRequired": "Confirm password is required.",
+      "confirmPasswordMatch": "Passwords do not match."
     }
   },
-  "SubscriptionCard": {
+  "subscriptionCard": {
     "billingCycle": "{cycle}",
     "started": "Started",
     "billingOn": "Billing on"
@@ -67,30 +70,32 @@
       "title": "Subscription calendar"
     },
     "form": {
-      "new_subscription": "New Subscription",
-      "second_title" : "Add a new subscription to your list",
-      "service_name": "Service Name",
+      "new_subscription": "New subscription",
+      "second_title": "Add a new subscription to your list",
+      "service_name": "Service name",
       "category": "Category",
       "description": "Description",
       "description_placeholder": "Describe your subscription...",
-      "start_date": "Start Date",
+      "start_date": "Start date",
       "price": "Price",
       "color": "Color",
-      "button": "Add Subscription",
+      "button": "Add subscription",
       "loading": "Creating...",
-      "billing_cycle": "Billing Cycle",
+      "billing_cycle": "Billing cycle",
       "billing_month": "Month",
-      "billing_month_detail": "Billed every month",
+      "billing_month_detail": "Billed monthly",
       "billing_quarter": "Quarter",
-      "billing_quarter_detail": "Billed every quarter",
+      "billing_quarter_detail": "Billed every 3 months",
       "billing_year": "Year",
-      "billing_year_detail": "Billed every year",
-      "create_subscription": "Create Subscription",
-      "select_date": "Select Date",
-      "select_price": "Enter Price",
+      "billing_year_detail": "Billed once a year",
+      "create_subscription": "Create subscription",
+      "select_category": "Select category",
+      "select_date": "Select date",
+      "select_price": "Enter price",
+      "placeholder_name": "Netflix, Spotify, etc.",
       "placeholder_description": "Describe your subscription...",
       "service_placeholder": "Enter service name",
-      "no_results": "No service found. Try another search name.",
+      "no_results": "No services found. Try another search name.",
       "chooseColor": "Color",
       "categories": {
         "streaming": "Streaming",
@@ -108,16 +113,16 @@
       }
     },
     "gauge": {
-      "monthly_cost": "Average Monthly Cost",
+      "monthly_cost": "Average monthly cost",
       "per_month": "per month",
-      "annual_cost": "Average Annual Cost",
+      "annual_cost": "Annual cost",
       "economic": "Economic",
       "moderate": "Moderate",
       "high": "High"
     }
   },
   "sidebar": {
-    "upgrade": "Upgrade Plan",
-    "logout": "LogOut"
+    "upgrade": "Upgrade",
+    "logout": "Logout"
   }
 }

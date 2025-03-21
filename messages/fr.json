@@ -1,14 +1,48 @@
 {
   "common": {
-      "hello": "Bonjour"
+    "hello": "Bonjour"
   },
   "LocaleSwitcher": {
-    "label": "Change language",
-    "locale": "{locale, select, fr {🇫🇷 French} en {🇺🇸 English} other {Unknown}}"
+    "label": "Changer de langue",
+    "locale": "{locale, select, fr {🇫🇷 Français} en {🇺🇸 Anglais} other {Inconnu}}"
   },
-  "errors": {
+  "login": {
+    "title": "Connectez-vous à votre compte",
+    "description": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
+    "email": "E-mail",
+    "emailPlaceholder": "Entrez votre e-mail",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "forgotPassword": "Mot de passe oublié ?",
+    "submit": "Se connecter",
+    "orContinueWith": "Ou continuez avec",
+    "google": "Google",
+    "success": "Connexion réussie",
+    "errors": {
       "emailInvalid": "L'adresse e-mail n'est pas valide.",
-      "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères.",
+      "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères."
+    }
+  },
+  "register": {
+    "title": "Créer un compte",
+    "description": "Rejoignez-nous en quelques secondes.",
+    "subtitle": "Rejoignez-nous en quelques secondes.",
+    "firstName": "Prénom",
+    "firstNamePlaceholder": "Entrez votre prénom",
+    "lastName": "Nom",
+    "lastNamePlaceholder": "Entrez votre nom",
+    "email": "Email",
+    "emailPlaceholder": "Entrez votre email",
+    "country": "Pays",
+    "countryPlaceholder": "Sélectionnez votre pays",
+    "password": "Mot de passe",
+    "passwordPlaceholder": "Entrez votre mot de passe",
+    "passwordConfirm": "Confirmer le mot de passe",
+    "passwordConfirmPlaceholder": "Confirmez votre mot de passe",
+    "register": "S'inscrire",
+    "registering": "Inscription en cours...",
+    "submit": "S'inscrire",
+    "errors": {
       "firstNameRequired": "Le prénom est requis.",
       "firstNameMaxLength": "Le prénom ne doit pas dépasser 32 caractères.",
       "lastNameRequired": "Le nom de famille est requis.",
@@ -19,97 +53,66 @@
       "countryRequired": "Le pays est requis.",
       "countryMaxLength": "Le pays ne doit pas dépasser 32 caractères.",
       "passwordRequired": "Le mot de passe est requis.",
+      "passwordMinLength": "Le mot de passe doit contenir au moins 8 caractères.",
       "passwordMaxLength": "Le mot de passe ne doit pas dépasser 32 caractères.",
       "passwordRegex": "Le mot de passe doit contenir au moins une majuscule, une minuscule, un chiffre et un caractère spécial.",
       "confirmPasswordRequired": "La confirmation du mot de passe est requise.",
       "confirmPasswordMatch": "Les mots de passe ne correspondent pas."
-    },
-  "login": {
-       "title": "Connectez-vous à votre compte",
-      "description": "Entrez votre e-mail ci-dessous pour vous connecter à votre compte",
-      "email": "E-mail",
-      "password": "Mot de passe",
-      "forgotPassword": "Mot de passe oublié ?",
-      "submit": "Se connecter",
-      "orContinueWith": "Ou continuez avec",
-      "google": "Google",
-      "success": "Connexion réussie"
-    },
-  "Register": {
-      "title": "Créer un compte",
-      "subtitle": "Rejoignez-nous en quelques secondes.",
-      "firstName": "Prénom",
-      "firstNamePlaceholder": "Entrez votre prénom",
-      "lastName": "Nom",
-      "lastNamePlaceholder": "Entrez votre nom",
-      "email": "Email",
-      "emailPlaceholder": "Entrez votre email",
-      "country": "Pays",
-      "countryPlaceholder": "Sélectionnez votre pays",
-      "password": "Mot de passe",
-      "passwordPlaceholder": "Entrez votre mot de passe",
-      "passwordConfirm": "Confirmer le mot de passe",
-      "passwordConfirmPlaceholder": "Confirmez votre mot de passe",
-      "register": "S'inscrire",
-      "registering": "Inscription en cours...",
-      "error": {
-        "unknown": "Une erreur inconnue est survenue.",
-        "unexpected": "Une erreur inattendue est survenue."
-      }
-    },
+    }
+  },
   "SubscriptionCard": {
-      "billingCycle": "{cycle}",
-      "started": "Démarré",
-      "billingOn": "Facturation le"
-    },
+    "billingCycle": "{cycle}",
+    "started": "Démarré",
+    "billingOn": "Facturation le"
+  },
   "subscription": {
-      "calendar": {
-        "title": "Calendrier des abonnements"
-      },
-      "form": {
-        "new_subscription": "Nouvel abonnement",
-        "second_title" : "Ajouter un nouvel abonnement à votre liste",
-        "service_name": "Nom du service",
-        "category": "Catégorie",
-        "description": "Description",
-        "description_placeholder": "Décrivez votre abonnement...",
-        "start_date": "Date de début",
-        "price": "Prix",
-        "color": "Couleur",
-        "button": "Ajouter un abonnement",
-        "loading": "Creation...",
-        "billing_cycle": "Cycle de facturation",
-        "billing_month": "Mois",
-        "billing_month_detail": "Facturé chaque mois",
-        "billing_quarter": "Trimestre",
-        "billing_quarter_detail": "Facturation tout les 3 mois",
-        "billing_year": "Année",
-        "billing_year_detail": "Facturé une fois par an",
-        "create_subscription": "Créer l'abonnement",
-        "select_category": "Sélectionner la catégorie",
-        "select_date": "Sélectionner une date",
-        "select_price": "Entrez le prix",
-        "placeholder_name": "Netflix, Spotify, etc.",
-        "placeholder_description": "Décrivez votre abonnement...",
-        "service_placeholder": "Enter service name",
-        "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
-        "chooseColor": "Couleur",
-        "categories": {
-          "streaming": "Streaming",
-          "music": "Musique",
-          "software": "Logiciel",
-          "gaming": "Jeux",
-          "cloud": "Cloud",
-          "communication": "Communication",
-          "finance": "Finance",
-          "shopping": "Shopping",
-          "transport": "Transport",
-          "health": "Santé",
-          "education": "Éducation",
-          "other": "Autre"
+    "calendar": {
+      "title": "Calendrier des abonnements"
+    },
+    "form": {
+      "new_subscription": "Nouvel abonnement",
+      "second_title": "Ajouter un nouvel abonnement à votre liste",
+      "service_name": "Nom du service",
+      "category": "Catégorie",
+      "description": "Description",
+      "description_placeholder": "Décrivez votre abonnement...",
+      "start_date": "Date de début",
+      "price": "Prix",
+      "color": "Couleur",
+      "button": "Ajouter un abonnement",
+      "loading": "Creation...",
+      "billing_cycle": "Cycle de facturation",
+      "billing_month": "Mois",
+      "billing_month_detail": "Facturé chaque mois",
+      "billing_quarter": "Trimestre",
+      "billing_quarter_detail": "Facturation tout les 3 mois",
+      "billing_year": "Année",
+      "billing_year_detail": "Facturé une fois par an",
+      "create_subscription": "Créer l'abonnement",
+      "select_category": "Sélectionner la catégorie",
+      "select_date": "Sélectionner une date",
+      "select_price": "Entrez le prix",
+      "placeholder_name": "Netflix, Spotify, etc.",
+      "placeholder_description": "Décrivez votre abonnement...",
+      "service_placeholder": "Enter service name",
+      "no_results": "Aucun service trouvé. Essayez un autre nom de recherche.",
+      "chooseColor": "Couleur",
+      "categories": {
+        "streaming": "Streaming",
+        "music": "Musique",
+        "software": "Logiciel",
+        "gaming": "Jeux",
+        "cloud": "Cloud",
+        "communication": "Communication",
+        "finance": "Finance",
+        "shopping": "Shopping",
+        "transport": "Transport",
+        "health": "Santé",
+        "education": "Éducation",
+        "other": "Autre"
       }
-      },
-      "gauge": {
+    },
+    "gauge": {
       "monthly_cost": "Coût mensuel moyen",
       "per_month": "par mois",
       "annual_cost": "Coût annuel",
