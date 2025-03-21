@@ -69,6 +69,10 @@
     "calendar": {
       "title": "Subscription calendar"
     },
+    "common": {
+      "loading": "Loading...",
+      "error": "An error occurred. Please try again later."
+    },
     "form": {
       "new_subscription": "New subscription",
       "second_title": "Add a new subscription to your list",
@@ -119,6 +123,16 @@
       "economic": "Economic",
       "moderate": "Moderate",
       "high": "High"
+    },
+    "calculator": {
+      "title": "Subscription calculator",
+      "montly_price": "Current monthly price",
+      "time_period": "Time period",
+      "total_cost": "Total cost",
+      "over": "over",
+      "year": "year",
+      "years": "years",
+      "discount": "Decrease of"
     }
   },
   "sidebar": {

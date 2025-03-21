@@ -4,6 +4,7 @@ import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { SiteHeader } from "@/components/site-header";
 import { auth } from "@/actions/auth";
 import Spinner from "@/components/ui/loader";
+import { redirect } from "next/navigation";
 
 export default async function AuthLayout({
   children,
@@ -11,7 +12,10 @@ export default async function AuthLayout({
   children: React.ReactNode;
 }) {
   const user = await auth();
-  console.log(user);
+
+  if (!user) {
+    redirect("/auth/login");
+  }
 
   return (
     <Suspense fallback={<Spinner />}>

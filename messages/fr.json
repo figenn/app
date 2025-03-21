@@ -69,6 +69,10 @@
     "calendar": {
       "title": "Calendrier des abonnements"
     },
+    "common": {
+      "loading": "Chargement...",
+      "error": "Erreur lors du chargement des données"
+    },
     "form": {
       "new_subscription": "Nouvel abonnement",
       "second_title": "Ajouter un nouvel abonnement à votre liste",
@@ -119,6 +123,16 @@
       "economic": "Économique",
       "moderate": "Modéré",
       "high": "Élevé"
+    },
+    "calculator": {
+      "title": "Calculateur d'abonnement futur",
+      "montly_price": "Prix mensuel actuel",
+      "time_period": "Période de temps",
+      "total_cost": "Coût total",
+      "over": "sur",
+      "year": "an",
+      "years": "ans",
+      "discount": "Diminution de"
     }
   },
   "sidebar": {

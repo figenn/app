@@ -97,9 +97,9 @@ const getSizeStyles = (size: "small" | "medium") => ({
 
 const DaysOfWeekHeader = ({ days }: { days: string[] }) => (
   <div className="grid grid-cols-7 border-b dark:border-slate-700">
-    {days.map((day) => (
+    {days.map((day, index) => (
       <div
-        key={day}
+        key={`day-of-week-${index}`}
         className="py-3 text-center font-medium text-muted-foreground"
       >
         {day}

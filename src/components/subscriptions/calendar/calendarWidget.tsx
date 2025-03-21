@@ -4,7 +4,7 @@ import Calendar from "@/components/ui/calendar/calendar";
 import { Subscription } from "@/interfaces/Subscription";
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { SubscriptionModal } from "@/components/calendar/subscriptionForm";
+import { SubscriptionModal } from "@/components/subscriptions/calendar/subscriptionForm";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useTranslations } from "next-intl";
 

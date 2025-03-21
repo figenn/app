@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ControllerRenderProps, useForm } from "react-hook-form";
@@ -16,7 +16,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Eye, EyeOff, Lock } from "lucide-react";
 import { toast } from "sonner";
-import { useTranslations, useLocale } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Separator } from "../ui/separator";
 import Spinner from "../ui/loader";
 import { StartConfetti } from "@/lib/confetti";
@@ -49,14 +49,11 @@ export function AuthForm({ formType }: AuthFormProps) {
   const isRegister = formType === "register";
 
   const useAuthSchema = () => {
-    const locale = useLocale();
-    return useMemo(() => {
-      if (isLogin) {
-        return loginSchema(t);
-      } else {
-        return registerSchema(t);
-      }
-    }, [locale, t]);
+    if (isLogin) {
+      return loginSchema(t);
+    } else {
+      return registerSchema(t);
+    }
   };
 
   const form = useForm<LoginFormData | RegisterFormData>({
