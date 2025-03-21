@@ -1,6 +1,6 @@
 'use server';
 
-import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/AuthSchema';
+import { ForgotPasswordFormData, LoginFormData, RegisterFormData, ResetPasswordFormData } from '@/schemas/Auth';
 import { cookies } from 'next/headers';
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;

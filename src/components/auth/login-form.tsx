@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { LoginFormData, loginSchema } from "@/schemas/AuthSchema";
+import { LoginFormData, loginSchema } from "@/schemas/Auth";
 import { login } from "@/actions/auth";
 import { toast } from "sonner";
 import { useTranslations } from "next-intl";
