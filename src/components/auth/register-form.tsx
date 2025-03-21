@@ -22,7 +22,7 @@ import { StartConfetti } from "@/lib/confetti";
 import { registerUser } from "@/actions/auth";
 import { CountryDropdown } from "../ui/country-dropdown";
 import Spinner from "../ui/loader";
-import { RegisterFormData, registerSchema } from "@/schemas/Auth";
+import { RegisterFormData, registerSchema } from "@/schemas/AuthSchema";
 
 export function RegisterForm() {
   const t = useTranslations("Register");

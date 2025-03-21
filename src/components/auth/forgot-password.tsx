@@ -17,7 +17,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { useTransition } from "react";
-import { ForgotPasswordFormData, forgotPasswordSchema } from "@/schemas/Auth";
+import {
+  ForgotPasswordFormData,
+  forgotPasswordSchema,
+} from "@/schemas/AuthSchema";
 import { forgotPassword } from "@/actions/auth";
 
 export function ForgotPasswordForm() {
