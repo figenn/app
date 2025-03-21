@@ -17,9 +17,9 @@ export async function SiteHeader({ user }: { user: User }) {
         </h1>
       </div>
       <div className="flex items-center gap-4">
-        <Bell className="size-7" />
+        <Bell className="size-6" />
         <ModeToggle />
-        <PlusCircleIcon className="size-7 text-orange-400" />
+        <PlusCircleIcon className="size-6 text-orange-400" />
       </div>
     </header>
   );
