@@ -18,11 +18,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { CountryDropdown } from "./ui/country-dropdown";
 import { StartConfetti } from "@/lib/confetti";
-import { RegisterFormData, registerSchema } from "@/schemas/Auth";
 import { registerUser } from "@/actions/auth";
-import Loader from "./ui/loader";
+import { CountryDropdown } from "../ui/country-dropdown";
+import Spinner from "../ui/loader";
+import { RegisterFormData, registerSchema } from "@/schemas/Auth";
 
 export function RegisterForm() {
   const t = useTranslations("Register");
@@ -227,7 +227,7 @@ export function RegisterForm() {
             )}
           />
           <Button type="submit" className="w-full" disabled={isPending}>
-            {isPending && <Loader />}
+            {isPending && <Spinner />}
             {t("register")}
           </Button>
         </form>
