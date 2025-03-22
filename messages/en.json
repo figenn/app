@@ -133,8 +133,19 @@
       "year": "year",
       "years": "years",
       "discount": "Decrease of"
+    },
+  "widget_upcoming": {
+    "today": "Today",
+    "upcoming_subscriptions": "Upcoming Subscriptions",
+    "week": "Week",
+    "next_payment": "Next Payment",
+    "total": "Total",
+    "error": {
+      "loading": "Error loading upcoming subscriptions",
+      "no_subscriptions": "No subscriptions this week"
     }
-  },
+  }
+},
   "sidebar": {
     "upgrade": "Upgrade",
     "logout": "Logout"

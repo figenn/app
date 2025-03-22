@@ -1,7 +1,8 @@
 "use client";
 
-import SubscriptionGauge from "@/components/widgets/subscription-progress";
 import { useQuery } from "@tanstack/react-query";
+import SubscriptionGauge from "./subscription-progress";
+import { UpcomingSubscriptionsWidget } from "./upcomingSubscriptions";
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -28,12 +29,14 @@ export default function WidgetRow({ bearer }: { bearer: string | undefined }) {
   });
 
   return (
-    <div className="w-1/3">
+    <div className="flex flex-col items-center justify-center md:flex-row gap-10">
       <SubscriptionGauge
         data={data ?? 0}
         isLoading={isLoading}
         error={error instanceof Error ? error.message : null}
       />
+      <UpcomingSubscriptionsWidget bearer={bearer} />
+      <UpcomingSubscriptionsWidget bearer={bearer} />
     </div>
   );
 }

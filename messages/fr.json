@@ -133,6 +133,17 @@
       "year": "an",
       "years": "ans",
       "discount": "Diminution de"
+    },
+    "widget_upcoming": {
+      "today": "Aujourd'hui",
+      "upcoming_subscriptions": "Abonnements à venir",
+      "week": "Semaine",
+      "next_payment": "Prochain paiement",
+      "total": "Total",
+      "error": {
+        "loading": "Erreur lors du chargement des abonnements à venir",
+        "no_subscriptions": "Aucun abonnement cette semaine"
+      }
     }
   },
   "sidebar": {
