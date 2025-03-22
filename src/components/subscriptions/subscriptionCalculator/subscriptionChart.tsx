@@ -48,7 +48,7 @@ function SubscriptionChart({
         </div>
       ) : (
         <ChartContainer config={chartConfig}>
-          <ResponsiveContainer width="100%" height="100%">
+          <ResponsiveContainer width="100%" height="90%">
             <AreaChart
               data={data}
               margin={{

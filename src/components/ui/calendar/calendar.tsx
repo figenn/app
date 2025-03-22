@@ -30,7 +30,6 @@ const Calendar = ({
 
   const calendarDays = getCalendarDays(currentMonth);
   const daysOfWeek = getDaysOfWeek(locale, isMobile);
-  const { cellSize } = getSizeStyles(size);
 
   useEffect(() => {
     if (!subscriptions || !Array.isArray(subscriptions)) {
@@ -55,7 +54,7 @@ const Calendar = ({
   return (
     <div
       className={cn(
-        "rounded-lg p-5 bg-primary-foreground border shadow-md overflow-hidden flex flex-col",
+        "rounded-lg p-2 sm:p-3 md:p-5 bg-primary-foreground border shadow-md overflow-hidden flex flex-col",
         "bg-card text-card-foreground transition-colors duration-200",
         className
       )}
@@ -74,7 +73,7 @@ const Calendar = ({
         events={events}
         isLoading={isLoading}
         size={size}
-        cellSize={cellSize}
+        isMobile={isMobile}
       />
     </div>
   );
@@ -91,16 +90,12 @@ const getDaysOfWeek = (locale: string, isMobile: boolean) => {
     });
 };
 
-const getSizeStyles = (size: "small" | "medium") => ({
-  cellSize: size === "small" ? "80px" : "150px",
-});
-
 const DaysOfWeekHeader = ({ days }: { days: string[] }) => (
   <div className="grid grid-cols-7 border-b dark:border-slate-700">
     {days.map((day, index) => (
       <div
         key={`day-of-week-${index}`}
-        className="py-3 text-center font-medium text-muted-foreground"
+        className="py-1 sm:py-2 md:py-3 text-center text-xs sm:text-sm font-medium text-muted-foreground"
       >
         {day}
       </div>
@@ -115,7 +110,7 @@ const CalendarGrid = ({
   events,
   isLoading,
   size,
-  cellSize,
+  isMobile,
 }: {
   days: Date[];
   currentMonth: Date;
@@ -123,11 +118,17 @@ const CalendarGrid = ({
   events: CalendarEvent[];
   isLoading: boolean;
   size: "small" | "medium";
-  cellSize: string;
+  isMobile: boolean;
 }) => (
   <div
     className="grid grid-cols-7 flex-1 divide-x divide-y dark:divide-slate-700"
-    style={{ gridAutoRows: cellSize }}
+    style={{
+      gridAutoRows: isMobile
+        ? "min-content"
+        : size === "small"
+        ? "80px"
+        : "150px",
+    }}
   >
     {days.map((day) => (
       <CalendarDay

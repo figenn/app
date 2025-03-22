@@ -23,7 +23,7 @@ export default async function AuthLayout({
         <AppSidebar variant="inset" user={user} />
         <SidebarInset>
           <SiteHeader user={user} />
-          <main className="mt-5">{children}</main>
+          <main className="mt-5 p-4">{children}</main>
         </SidebarInset>
       </SidebarProvider>
     </Suspense>

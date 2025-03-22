@@ -1,51 +1,53 @@
+"use client";
+
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { formatMonthYear } from "@/utils/calendarUtils";
-import { CalendarHeaderProps } from "@/interfaces/Calendar";
+
+interface CalendarHeaderProps {
+  currentMonth: Date;
+  onNextMonth: () => void;
+  onPrevMonth: () => void;
+  locale: string;
+}
 
 const CalendarHeader = ({
   currentMonth,
   onNextMonth,
   onPrevMonth,
   locale,
-}: CalendarHeaderProps) => (
-  <div className="flex items-center justify-between p-4">
-    <h2 className="text-xl font-medium tracking-tight text-balance">
-      {formatMonthYear(currentMonth, locale)}
-    </h2>
-    <div className="flex space-x-2">
-      <MonthButton
-        icon={<ChevronLeft className="h-4 w-4" />}
-        onClick={onPrevMonth}
-        label="Previous month"
-      />
-      <MonthButton
-        icon={<ChevronRight className="h-4 w-4" />}
-        onClick={onNextMonth}
-        label="Next month"
-      />
-    </div>
-  </div>
-);
+}: CalendarHeaderProps) => {
+  const monthYearFormat = new Intl.DateTimeFormat(locale, {
+    month: "long",
+    year: "numeric",
+  });
 
-const MonthButton = ({
-  icon,
-  onClick,
-  label,
-}: {
-  icon: React.ReactNode;
-  onClick: () => void;
-  label: string;
-}) => (
-  <Button
-    variant="outline"
-    size="icon"
-    onClick={onClick}
-    className="h-8 w-8 rounded-full transition-all hover:scale-105 active:scale-95"
-  >
-    {icon}
-    <span className="sr-only">{label}</span>
-  </Button>
-);
+  return (
+    <div className="flex items-center justify-between mb-2 sm:mb-4">
+      <h2 className="text-base sm:text-lg md:text-xl font-semibold">
+        {monthYearFormat.format(currentMonth)}
+      </h2>
+      <div className="flex space-x-1 sm:space-x-2">
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-7 w-7 sm:h-9 sm:w-9"
+          onClick={onPrevMonth}
+        >
+          <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="sr-only">Previous month</span>
+        </Button>
+        <Button
+          variant="outline"
+          size="icon"
+          className="h-7 w-7 sm:h-9 sm:w-9"
+          onClick={onNextMonth}
+        >
+          <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5" />
+          <span className="sr-only">Next month</span>
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 export default CalendarHeader;
